@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 
 // global styles
 import '@scss/main.scss'
@@ -9,6 +12,8 @@ import App from '@components/root/App.js'
 const rootEl = document.querySelector('#root')
 
 ReactDOM.render(
-  <App />,
+  <Router>
+    <App />
+  </Router>,
   rootEl
 )

@@ -1,7 +1,16 @@
-@import "mixins";
+// z-indexes
+$zIndex_drawer: 10;
+$zIndex_modal: 20;
 
-$color_1: #F25E6B;
-$color_2: #73363B;
-$bg_color_1: #112226;
-$bg_color_2: #0C3B40;
-$light_green_1: #A9BF5A;
+// breakpoints
+$smallphone: 415px;
+$tablet: 769px;
+$desktop: 1200px;
+
+// drawer
+$drawer-max-width: 320px;
+
+// general
+$screen-min-width: 320px; // smallest width supported
+
+@import "mixins";

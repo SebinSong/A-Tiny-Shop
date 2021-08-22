@@ -1,9 +1,62 @@
 @font-face {
-  src: url(../assets/fonts/urbanist_400_regular.woff2) format('woff2');
-  font-family: "urbanist";
+  src: url(../assets/fonts/dosis_400_regular.woff2) format('woff2');
+  font-family: "Dosis";
   font-weight: 400;
 }
 
+@font-face {
+  src: url(../assets/fonts/dosis_600_semibold.woff2) format('woff2');
+  font-family: "Dosis";
+  font-weight: 600;
+}
+
+@font-face {
+  src: url(../assets/fonts/MaterialIcons_400.woff2) format('woff2');
+  font-family: "Material Icons";
+  font-weight: 400;
+}
+
+
 :root {
-  font-family: "urbanist";
+  font-size: 10px; // standardized font-size
+  font-family: "Dosis";
+  font-weight: 400;
+
+  // font-smoothing settings on various platforms
+  -moz-osx-font-smoothing: grayscale; // fire-fox
+  text-rendering: optimizeLegibility; // Safari and Chrome
+  -webkit-font-smoothing: antialiased; // all webkit browsers
+  font-feature-settings: 'liga'; // IE
+
+  // standardized font-sizes declaration
+  --size-0: 1.6rem;
+  --size-1: 1.8rem;
+  --size-2: 2rem;
+  --size-3: 2.2rem;
+  --size-4: 2.5rem;
+
+  // line-height
+  --line-height: 1.25;
+}
+
+// icons
+
+.mi {
+  display: inline-block;
+  font: {
+    family: "Material Icons";
+    weight: 400;
+    style: normal;
+    size: var(--size-0);
+  }
+  line-height: var(--line-height);
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.mib {
+  font-weight: 700;
 }

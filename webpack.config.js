@@ -108,7 +108,7 @@ module.exports = (envSettings) => {
                 { loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',
                   options: Object.assign({}, 
                     isProd && {
-                      publicPath: '../../'
+                      publicPath: '../../' // fixes the issue where css url() path doesn't resolve correctly on production build
                     })
                 },
                 { loader: require.resolve('css-loader') },
@@ -183,11 +183,13 @@ module.exports = (envSettings) => {
       config,
       {
         devServer: {
+          historyApiFallback: true, 
+          // fixes the error where a route isn't matched on page refresh or on manually typing the url
           hot: true,
           compress: true,
           overlay: true,
           contentBase: paths.appDist,
-          port: 3030
+          port: 5000
         }
       }
     )

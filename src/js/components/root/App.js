@@ -1,30 +1,28 @@
 import React from 'react'
+import {
+  Switch,
+  Route
+} from "react-router";
 
-import imgPath from '@images/image.jpg'
+// page-components
+import Home from '../pages/home'
+import Catalog from '../pages/catalog'
+
 import './App.scss'
 
 function App (props) {
-  const blockEls = []
-
-  for (let i=0; i<5; i++) {
-    blockEls.push(
-      <div className={`app_block is-${i + 1}`}
-        key={i}></div>
-    )
-  }
 
   return (
     <div className="app-container">
-      { blockEls }
+      <Switch>
+        <Route path="/catalog">
+          <Catalog />
+        </Route>
 
-      <img src={imgPath} alt="example image" />
-
-      <span className="name">
-        React SPA bolierplate
-        <br />
-        Created by
-        <a target="_blank" href="https://github.com/SebinSong">Sebin Song</a>
-      </span>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </div>
   )
 }

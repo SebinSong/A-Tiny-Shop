@@ -1,0 +1,33 @@
+:root {
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  user-select: text;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-0);
+  font-size: var(--size-0);
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+
+  &[type="checkobx"],
+  &[type="radio"] {
+    vertical-align: baseline;
+  }
+}
+
+button {
+  @extend %reset-button;
+  cursor: pointer;
+  font-family: "Dosis";
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
