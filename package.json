@@ -1,8 +1,8 @@
 {
-  "name": "my-react-spa-boilerplate",
+  "name": "a-tiny-shop",
   "version": "1.0.0",
-  "description": "React SPA boilerplate configured using Webpack",
-  "homepage": "http://SebinSong.github.io/my-react-spa-boilerplate",
+  "description": "A eCommerce website for react practice",
+  "homepage": "http://sebinsong.github.io/a-tiny-shop/",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --env mode=development --open",
