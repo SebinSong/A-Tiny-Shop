@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunka_tiny_shop=self.webpackChunka_tiny_shop||[]).push([[701],{541:function(a,e,t){t.r(e);var n=t(294);e.default=function(a){return n.createElement("main",{className:"page catalog"},"Catalog Page")}}}]);
