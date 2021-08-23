@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_react_spa_boilerplate=self.webpackChunkmy_react_spa_boilerplate||[]).push([[701],{541:function(a,e,t){t.r(e);var l=t(294);e.default=function(a){return l.createElement("main",{className:"page catalog"},"Catalog Page")}}}]);
