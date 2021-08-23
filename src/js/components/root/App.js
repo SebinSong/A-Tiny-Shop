@@ -8,12 +8,17 @@ import {
 import Home from '../pages/home'
 import Catalog from '../pages/catalog'
 
+// child-components
+import NavigationBar from '../shared/navigation-bar'
+
 import './App.scss'
 
 function App (props) {
 
   return (
-    <div className="app-container">
+    <>
+      <NavigationBar />
+
       <Switch>
         <Route path="/catalog">
           <Catalog />
@@ -23,7 +28,7 @@ function App (props) {
           <Home />
         </Route>
       </Switch>
-    </div>
+    </>
   )
 }
 

@@ -33,12 +33,28 @@ module.exports = (envSettings) => {
   
   const config = {
     entry: './src/index.js',
-    output: {
-      filename: isProd ? 'static/js/[name].[contenthash:8].js' :
-        isDev ? 'static/js/[name].bundle.js' : '',
-      path: paths.appDist,
-      publicPath: ''
-    },
+    output: Object.assign({
+        filename: isProd ? 'static/js/[name].[contenthash:8].js' :
+          isDev ? 'static/js/[name].bundle.js' : '',
+        path: paths.appDist,
+        chunkFilename: isProd
+        ? 'static/js/[name].[contenthash:8].chunk.js'
+        : isDev && 'static/js/[name].chunk.js',
+        publicPath: ''
+      },
+      isProd && {
+        environment: {
+          // IE-11 env support setting reference: https://stackoverflow.com/a/67382143
+          arrowFunction: false,
+          bigIntLiteral: false,
+          const: false,
+          destructuring: false, 
+          dynamicImport: false,
+          forOf: false,
+          module: false,
+        }
+      }
+    ),
     mode: mode || 'none',
     module: {
       rules: [
@@ -159,7 +175,8 @@ module.exports = (envSettings) => {
       alias: {
         '@scss': paths.appSass,
         '@images': path.join(paths.appAssets, 'images'),
-        '@components':  path.join(paths.appSrc, 'js/components')
+        '@components':  path.join(paths.appSrc, 'js/components'),
+        '@viewdata':  path.join(paths.appSrc, 'js/view-data')
       },
       extensions: ['.js', '.json'], // extensions to be used to resolve when a module is referenced without the extension specified
       mainFiles: ['index'] // the file name to be used when resolving a folder

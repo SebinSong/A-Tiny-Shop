@@ -1,3 +1,14 @@
-import Home from './Home.js';
+import React from 'react'
+import Loadable from '@loadable/component'
+import Fallback from '../fallback'
 
-export default Home;
+const LazyHome = Loadable(
+  () => import(
+    /* webpackChunkName: "home",
+       webpackPrefetch: true */
+    './Home.js'),
+  {
+    fallback: <Fallback />
+  }
+)
+export default LazyHome;
