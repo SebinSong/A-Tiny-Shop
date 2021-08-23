@@ -1,6 +1,7 @@
 // z-indexes
-$zIndex_drawer: 10;
-$zIndex_modal: 20;
+$zIndex_toolbar: 10;
+$zIndex_drawer: 20;
+$zIndex_modal: 30;
 
 // breakpoints
 $smallphone: 415px;
@@ -9,6 +10,9 @@ $desktop: 1200px;
 
 // drawer
 $drawer-max-width: 320px;
+
+// toolbar
+$toolbar-height: 6.8rem;
 
 // general
 $screen-min-width: 320px; // smallest width supported

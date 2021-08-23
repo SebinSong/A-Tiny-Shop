@@ -65,6 +65,10 @@
   }
 }
 
+@mixin dashline ($color: #000) {
+  border: 1px dashed $color;
+}
+
 %unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

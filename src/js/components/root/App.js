@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   Switch,
+  Redirect,
   Route
 } from "react-router";
 
@@ -20,13 +21,15 @@ function App (props) {
       <NavigationBar />
 
       <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
+
         <Route path="/catalog">
           <Catalog />
         </Route>
 
-        <Route path="/">
-          <Home />
-        </Route>
+        <Redirect to="/home" />
       </Switch>
     </>
   )

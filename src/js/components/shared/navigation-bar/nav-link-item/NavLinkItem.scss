@@ -1,0 +1,37 @@
+.navigation-bar .toolbar-container .toolbar__item.nav-link {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 0.8rem;
+
+  a {
+    position: relative;
+    display: inline-block;
+    font: {
+      size: var(--size-0);
+      weight: 600;
+    }
+    text-decoration: none;
+    z-index: 2;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 0;
+      bottom: -0.2rem;
+      width: 100%;
+      height: 60%;
+      z-index: -1;
+      background-color: var(--navbar-active-item-bg-color);
+    }
+
+    &.active::after {
+      display: block;
+    }
+  }
+
+  &:hover a {
+    text-decoration: underline;
+  }
+}
