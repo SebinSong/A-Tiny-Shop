@@ -29,7 +29,7 @@ function App (props) {
           <Catalog />
         </Route>
 
-        <Redirect to="/home" />
+        <Redirect to="/catalog" />
       </Switch>
     </>
   )

@@ -5,7 +5,7 @@
   --primary-3: #ECF238;
   --secondary-1: #03A696;
   --secondary-2: #025159;
-  --warning: #FF152E;
+  --warning: var(--primary-1);
 
   --text-0: #262626; // a primary text-color to use on a white bg
   --text-0_1: #595959; // a slightly lighter primary (or, #636159)
@@ -13,6 +13,9 @@
 
   --background-0: #FFFFFF;
   --background-1: #F2EBE9;
+
+  // general
+  --divider-color: #BDBDBD;
 
   // navigation-bar
   --navbar-bg-color: var(--background-0);

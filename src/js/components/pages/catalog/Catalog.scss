@@ -1,3 +1,18 @@
 .page.catalog {
-  position: relative;
+  $solid-line: 1px solid var(--divider-color);
+
+  .page-header {
+    position: relative;
+    padding: 4.2rem 0 2.2rem;
+    border-bottom: $solid-line;
+
+    h1 {
+      font-size: 4.6rem;
+      font-weight: 600;
+      width: max-content;
+      padding: 0.8rem 1.2rem;
+      border: $solid-line;
+      box-shadow: 8px -8px 0px 0px var(--primary-3);
+    }
+  }
 }

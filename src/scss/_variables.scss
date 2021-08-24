@@ -16,5 +16,6 @@ $toolbar-height: 6.8rem;
 
 // general
 $screen-min-width: 320px; // smallest width supported
+$page-content-max-width: $desktop;
 
 @import "mixins";
