@@ -8,6 +8,10 @@ function Catalog (props) {
       <div className="page-header">
         <h1>Catalog</h1>
       </div>
+
+      <div className="catalog-content">
+        
+      </div>
     </main>
   )
 };

@@ -8,7 +8,9 @@
     "dev": "webpack serve --env mode=development --open",
     "build": "webpack --env mode=production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+
+    "image-data": "node node-helpers/createClothesData.js"
   },
   "author": "Sebin Song",
   "license": "MIT",
