@@ -1,10 +1,10 @@
 :root {
   // main colors that compose the theme of the website
-  --primary-1: #D9665B;
-  --primary-2: #D99066;
-  --primary-3: #F2DC9B;
-  --secondary-1: #022873;
-  --secondary-2: #022873;
+  --primary-1: #F20505;
+  --primary-2: #F25D27;
+  --primary-3: #ECF238;
+  --secondary-1: #03A696;
+  --secondary-2: #025159;
   --warning: #FF152E;
 
   --text-0: #262626; // a primary text-color to use on a white bg
@@ -17,6 +17,6 @@
   // navigation-bar
   --navbar-bg-color: var(--background-0);
   --navbar-text-color: var(--text-0);
-  --navbar-divider-color: #ECECEC;
+  --navbar-divider-color: #BDBDBD;
   --navbar-active-item-bg-color: var(--primary-3);
 }
