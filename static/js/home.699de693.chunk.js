@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunka_tiny_shop=self.webpackChunka_tiny_shop||[]).push([[177],{792:function(e,a,t){t.r(a);var n=t(294),s=t(172);a.default=function(e){return n.createElement("main",{className:"page home"},"Hello world! I'm home. haha",n.createElement(s.Z,{tag:"i",isBold:!0},"search"))}}}]);

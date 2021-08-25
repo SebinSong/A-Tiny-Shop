@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/home.8a380b1b.chunk.css","mappings":";AAAA","sources":["webpack://a-tiny-shop/./src/js/components/pages/home/Home.scss"],"sourcesContent":[".page.home{font-size:var(--size-4);color:var(--text-1);background-color:var(--primary-1)}"],"names":[],"sourceRoot":""}
