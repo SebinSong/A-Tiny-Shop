@@ -6,6 +6,7 @@ import {
 
 // global styles
 import '@scss/main.scss'
+
 // root component
 import App from '@components/root/App.js'
 

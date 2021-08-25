@@ -17,6 +17,7 @@
 
   // general
   --divider-color: #BDBDBD;
+  --box-shadow: var(--text-0_2);
 
   // navigation-bar
   --navbar-bg-color: var(--background-0);
@@ -27,4 +28,9 @@
   // forms - checkbox
   --checkbox-text-color: var(--text-0);
   --checkbox-mark-color: var(--secondary-1);
+
+  // forms - dropdown
+  --dropdown-bg-color: var(--background-0);
+  --dropdown-text-color: var(--text-0);
+  --dropdown-bg-color_hover: var(--primary-3);
 }

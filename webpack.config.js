@@ -176,6 +176,8 @@ module.exports = (envSettings) => {
         '@scss': paths.appSass,
         '@images': path.join(paths.appAssets, 'images'),
         '@components':  path.join(paths.appSrc, 'js/components'),
+        '@contexts':  path.join(paths.appSrc, 'js/contexts'),
+        '@hooks':  path.join(paths.appSrc, 'js/hooks'),
         '@viewdata':  path.join(paths.appSrc, 'js/view-data'),
         '@view-utils': path.join(paths.appSrc, 'js/view-utils.js')
       },

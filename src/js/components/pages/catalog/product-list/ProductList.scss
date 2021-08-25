@@ -3,5 +3,16 @@
   display: block;
   flex-grow: 1;
 
-  @include dashline;
+  .sort-by {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .text {
+      display: inline-block;
+      margin-right: 1.6rem;
+    }
+  }
 }

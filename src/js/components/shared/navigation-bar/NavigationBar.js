@@ -1,12 +1,12 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 
-// assets
-import logoBlackPath from '@images/logo_black.png'
+// hooks
+import { useMQ } from '@hooks'
 
 // child components
 import NavLinkItem from './nav-link-item/NavLinkItem'
 import IconButton from './icon-button/IconButton'
+import NavLogo from './nav-logo/NavLogo'
 
 import './NavigationBar.scss'
 
@@ -17,27 +17,28 @@ const navLinkList = [
 ]
 
 function NavigationBar (props) {
-  const history = useHistory()
+  const isAfterTablet = useMQ('from-tablet')
+
+  const afterTablet = (
+    <ul className="toolbar__nav-link-container">
+      <NavLogo />
+
+      {navLinkList.map(
+        item => <NavLinkItem key={item.id} {...item} />
+      )}
+    </ul>
+  )
+  const beforeTablet = (
+    <>
+      <IconButton classes="menu-icon">menu</IconButton>
+      <NavLogo />
+    </>
+  )
 
   return (
     <aside className="navigation-bar">
       <ul className="toolbar-container">
-        <ul className="toolbar__nav-link-container">
-          {/* logo */}
-          <li className="toolbar__item logo"
-            onClick={() => history.push('/home')}
-          >
-            <a>
-              <img className="toolbar__logo-image"
-                alt="tiny-shop-logo"
-                src={logoBlackPath} />
-            </a>
-          </li>
-
-          {navLinkList.map(
-            item => <NavLinkItem key={item.id} {...item} />
-          )}
-        </ul>
+        {isAfterTablet ? afterTablet : beforeTablet}
 
         <ul className="toolbar__icon-btn-container">
           <IconButton classes="search-icon">search</IconButton>
