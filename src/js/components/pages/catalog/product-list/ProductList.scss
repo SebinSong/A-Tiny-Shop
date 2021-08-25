@@ -1,0 +1,7 @@
+.catalog-page__product-list {
+  position: relative;
+  display: block;
+  flex-grow: 1;
+
+  @include dashline;
+}

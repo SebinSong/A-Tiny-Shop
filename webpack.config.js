@@ -176,7 +176,8 @@ module.exports = (envSettings) => {
         '@scss': paths.appSass,
         '@images': path.join(paths.appAssets, 'images'),
         '@components':  path.join(paths.appSrc, 'js/components'),
-        '@viewdata':  path.join(paths.appSrc, 'js/view-data')
+        '@viewdata':  path.join(paths.appSrc, 'js/view-data'),
+        '@view-utils': path.join(paths.appSrc, 'js/view-utils.js')
       },
       extensions: ['.js', '.json'], // extensions to be used to resolve when a module is referenced without the extension specified
       mainFiles: ['index'] // the file name to be used when resolving a folder

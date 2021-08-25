@@ -1,10 +1,11 @@
 .page.catalog {
   $solid-line: 1px solid var(--divider-color);
 
-  .page-header {
+  .catalog-page__header {
     position: relative;
     padding: 4.2rem 0 2.2rem;
     border-bottom: $solid-line;
+    margin-bottom: 4.6rem;
 
     h1 {
       font-size: 4.6rem;
@@ -14,5 +15,12 @@
       border: $solid-line;
       box-shadow: 8px -8px 0px 0px var(--primary-3);
     }
+  }
+
+  .catalog-page__content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 }

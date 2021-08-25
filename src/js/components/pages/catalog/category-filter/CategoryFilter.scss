@@ -1,0 +1,57 @@
+%sub-text-style {
+  color: var(--secondary-1);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+}
+
+.catalog-page__category-filter {
+  position: relative;
+  display: block;
+  max-width: $screen-min-width;
+  width: max-content;
+  min-width: 24rem;
+
+  .category-filter__section-title {
+    position: relative;
+    margin-bottom: 3.6rem;
+
+    h1 {
+      font-weight: 600;
+      font-size: 2.4rem;
+      color: var(--text-0);
+    }
+
+    .sub {
+      display: block;
+      @extend %sub-text-style;
+    }
+  }
+
+  .category-filter__filters {
+    position: relative;
+    display: block;
+    margin-bottom: 1.8rem;
+
+    .filter-group {
+      display: block;
+
+      .group-name {
+        @extend %sub-text-style;
+  
+        display: block;
+        text-decoration: underline;
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .checkbox-container {
+        display: flex;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 2.6rem;
+      }
+    }
+  }
+}
