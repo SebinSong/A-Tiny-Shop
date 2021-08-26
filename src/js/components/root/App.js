@@ -8,6 +8,7 @@ import {
 // page-components
 import Home from '../pages/home'
 import Catalog from '../pages/catalog'
+import ShoppingCart from '../pages/shopping-cart'
 
 // child-components
 import NavigationBar from '../shared/navigation-bar'
@@ -27,6 +28,10 @@ function App (props) {
 
         <Route path="/catalog">
           <Catalog />
+        </Route>
+
+        <Route path="/shopping-cart">
+          <ShoppingCart />
         </Route>
 
         <Redirect to="/catalog" />

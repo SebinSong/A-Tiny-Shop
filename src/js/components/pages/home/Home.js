@@ -8,8 +8,9 @@ import "./Home.scss";
 function Home (props) {
   return (
     <main className="page home">
-      Hello world! I'm home. haha
-      <Icon tag="i" isBold>search</Icon>
+      Home Page. 
+      <br/>
+      TBD Soon.
     </main>
   )
 };

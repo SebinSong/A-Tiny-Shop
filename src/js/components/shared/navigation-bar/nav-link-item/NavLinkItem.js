@@ -1,6 +1,7 @@
 import React from 'react'
 import {
-  NavLink
+  NavLink,
+  useHistory
 } from 'react-router-dom'
 
 import './NavLinkItem.scss'
@@ -10,8 +11,11 @@ function NavLinkItem ({
   name = '',
   to = '/'
 }) {
+  const history = useHistory()
+
   return (
-    <li className="toolbar__item nav-link">
+    <li className="toolbar__item nav-link"
+      onClick={() => history.push(to)}>
       <NavLink to={to}
         activeClassName="active"
       >{children || name || ''}</NavLink>
