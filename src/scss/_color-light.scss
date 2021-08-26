@@ -25,6 +25,14 @@
   --navbar-divider-color: #BDBDBD;
   --navbar-active-item-bg-color: var(--primary-3);
 
+  // drawer
+  --drawer-bg-color: var(--background-0);
+  --drawer-bg-color_hover: rgba(0,0,0,0.1);
+  --drawer-backdrop-bg-color: rgba(0,0,0,0.2);
+  --drawer-divider-color: var(--text-0);
+  --drawer-text-color: var(--text-0);
+  --drawer-text-color_hover: var(--text-1);
+
   // forms - checkbox
   --checkbox-text-color: var(--text-0);
   --checkbox-mark-color: var(--secondary-1);

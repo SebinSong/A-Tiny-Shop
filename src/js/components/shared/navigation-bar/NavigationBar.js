@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { 
+  useState,
+  useCallback
+} from 'react'
 
 // hooks
 import { useMQ } from '@hooks'
@@ -7,6 +10,7 @@ import { useMQ } from '@hooks'
 import NavLinkItem from './nav-link-item/NavLinkItem'
 import IconButton from './icon-button/IconButton'
 import NavLogo from './nav-logo/NavLogo'
+import DrawerMenu from './drawer-menu'
 
 import './NavigationBar.scss'
 
@@ -17,8 +21,17 @@ const navLinkList = [
 ]
 
 function NavigationBar (props) {
+  // hooks
   const isAfterTablet = useMQ('from-tablet')
 
+  // states
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  // methods
+  const openDrawer = useCallback(() => setIsDrawerOpen(true), [])
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), [])
+
+  // view
   const afterTablet = (
     <ul className="toolbar__nav-link-container">
       <NavLogo />
@@ -30,7 +43,8 @@ function NavigationBar (props) {
   )
   const beforeTablet = (
     <>
-      <IconButton classes="menu-icon">menu</IconButton>
+      <IconButton classes="menu-icon"
+        onClick={openDrawer}>menu</IconButton>
       <NavLogo />
     </>
   )
@@ -45,6 +59,9 @@ function NavigationBar (props) {
           <IconButton classes="cart-icon">shopping_cart</IconButton>
         </ul>
       </ul>
+
+      <DrawerMenu isDrawerOpen={isDrawerOpen}
+        closeDrawer={closeDrawer} />
     </aside>
   )
 }
