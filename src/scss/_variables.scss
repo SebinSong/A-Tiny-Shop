@@ -8,11 +8,18 @@ $smallphone: 415px;
 $tablet: 769px;
 $desktop: 1200px;
 
+// button
+$button-min-height: 3.8rem;
+$button-min-width: 22rem;
+
 // drawer
 $drawer-max-width: 320px;
 
 // toolbar
 $toolbar-height: 6.8rem;
+
+// product-card
+$card-width: 24rem;
 
 // general
 $screen-min-width: 320px; // smallest width supported

@@ -7,7 +7,7 @@ import { toggleClass } from '@view-utils'
 
 // components
 import Checkbox from '@components/shared/checkbox'
-import Icon from '@components/global/Icon'
+import Icon from '@components/global/icon'
 
 function FilterGroup ({
   filterName = '',

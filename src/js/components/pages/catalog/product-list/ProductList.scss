@@ -52,11 +52,13 @@
       .count {
         display: block;
         letter-spacing: 0.75px;
+        font-size: 1.5rem;
 
         .num {
           display: inline-block;
           text-decoration: underline;
           margin-right: 0.6rem;
+          font-size: var(--size-1);
         }
       }
 
@@ -80,6 +82,23 @@
     .text {
       display: inline-block;
       margin-right: 1.6rem;
+    }
+  }
+
+  .product-list__content {
+    position: relative;
+    display: block;
+    
+    .product-list__item-list {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .product-list__item {
+        margin-right: 2rem;
+        margin-bottom: 3.2rem;
+      }
     }
   }
 }

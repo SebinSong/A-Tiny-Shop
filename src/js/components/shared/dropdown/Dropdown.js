@@ -5,7 +5,7 @@ import React, {
 } from 'react'
 
 // components
-import Icon from '@components/global/Icon'
+import Icon from '@components/global/icon'
 
 import './Dropdown.scss'
 

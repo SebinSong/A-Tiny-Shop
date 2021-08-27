@@ -2,7 +2,7 @@
   // main colors that compose the theme of the website
   --primary-1: #F20505;
   --primary-2: #F25D27;
-  --primary-3: #ECF238;
+  --primary-3: #D9C5A0;
   --secondary-1: #03A696;
   --secondary-2: #025159;
   --warning: var(--primary-1);
@@ -11,6 +11,7 @@
   --text-0_1: #595959; // a slightly lighter primary (or, #636159)
   --text-0_2: #898989;
   --text-1: #FFFFFF; // a secondart text-color to use on a colorized bg.
+  --text-2: var(--secondary-1);
 
   --background-0: #FFFFFF;
   --background-1: #F2EBE9;
@@ -19,6 +20,17 @@
   --divider-color: #BDBDBD;
   --box-shadow: var(--text-0_2);
   --sub-header-text-color: var(--secondary-1);
+
+  // button
+  --button-primary-bg-color: var(--text-0);
+  --button-primary-text-color: var(--text-1);
+  --button-primary-border-color: var(--text-0);
+  --button-secondary-bg-color: var(--secondary-1);
+  --button-secondary-text-color: var(--text-1);
+  --button-secondary-border-color: var(--secondary-1);
+  --button-tertiary-bg-color: var(--primary-3);
+  --button-tertiary-text-color: var(--text-0);
+  --button-tertiary-border-color: var(--text-0);
 
   // navigation-bar
   --navbar-bg-color: var(--background-0);
@@ -33,6 +45,12 @@
   --drawer-divider-color: var(--text-0);
   --drawer-text-color: var(--text-0);
   --drawer-text-color_hover: var(--text-1);
+
+  // product-card
+  --product-card-img-bg-color: var(--background-0);
+  --product-card-img-border-color: var(--divider-color);
+  --product-card-img-shadow-color: var(--primary-3);
+  --product-card-name-text-color: var(--text-0);
 
   // forms - checkbox
   --checkbox-text-color: var(--text-0);

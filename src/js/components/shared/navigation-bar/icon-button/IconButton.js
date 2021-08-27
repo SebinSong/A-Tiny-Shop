@@ -1,7 +1,7 @@
 import React from 'react'
 
 // child components
-import Icon from '@components/global/Icon'
+import Icon from '@components/global/icon'
 
 import './IconButton.scss'
 

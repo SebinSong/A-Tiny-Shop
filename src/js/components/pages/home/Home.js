@@ -1,8 +1,5 @@
 import React from 'react';
 
-// child components
-import Icon from '@components/global/Icon'
-
 import "./Home.scss";
 
 function Home (props) {

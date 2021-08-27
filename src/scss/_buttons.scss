@@ -1,0 +1,28 @@
+button.is-primary,
+button.is-secondary,
+button.is-tertiary {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: $button-min-width;
+  min-height: $button-min-height;
+  font-size: var(--size-0);
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active {
+    font-weight: 600;
+  }
+}
+
+$button-type-list: 'primary', 'secondary', 'tertiary';
+
+@each $btn-type in $button-type-list {
+  button.is-#{$btn-type} {
+    background-color: var(--button-#{$btn-type}-bg-color);
+    color: var(--button-#{$btn-type}-text-color);
+    border: 1px solid var(--button-#{$btn-type}-border-color);
+  }
+}

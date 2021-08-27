@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 // components
-import Icon from '@components/global/Icon'
+import Icon from '@components/global/icon'
 
 // utils
 import { toggleClass } from '@view-utils'

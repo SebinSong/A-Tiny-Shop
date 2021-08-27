@@ -2,6 +2,10 @@ import React from 'react'
 
 // components
 import Dropdown from '@components/shared/dropdown'
+import ProductCard from '@components/global/product-card'
+
+// view-data
+import clothesList from '@viewdata/clothes-data'
 
 import './ProductList.scss'
 
@@ -34,6 +38,20 @@ function ProductList (props) {
             options={optionsList}
             initialItem={optionsList[0]} />
         </div>
+      </div>
+
+      <div className="product-list__content">
+        <ul className="product-list__item-list">
+          {
+            clothesList.map(
+              item => <ProductCard
+              classes="product-list__item"
+              tag="li"
+              key={item.id}
+              productInfo={item} />
+            )
+          }
+        </ul>
       </div>
     </section>
   )
