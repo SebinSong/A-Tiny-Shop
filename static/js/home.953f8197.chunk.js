@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunka_tiny_shop=self.webpackChunka_tiny_shop||[]).push([[177],{792:function(e,n,a){a.r(n);var t=a(294);a(172);n.default=function(e){return t.createElement("main",{className:"page home"},"Home Page.",t.createElement("br",null),"TBD Soon.")}}}]);
