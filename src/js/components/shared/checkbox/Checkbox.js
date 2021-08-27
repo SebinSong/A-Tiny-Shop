@@ -9,12 +9,13 @@ import {
 import './Checkbox.scss'
 
 function Checkbox ({
-  label = '',
+  item = null,
   children = '',
   onChange = null
 }) {
-  let inputId = `checkbox-${children || label}`
-
+  const label = children || item?.name || ''
+  let inputId = `checkbox-${label}`
+  
   const [isChecked, setIsChecked] = useState(false)
 
 
@@ -24,7 +25,7 @@ function Checkbox ({
       const newVal = !v
 
       onChange &&
-        onChange(children || label, newVal)
+        onChange(item || { id: label, name: label }, newVal)
       return newVal;
     })
   }
@@ -43,7 +44,7 @@ function Checkbox ({
       </span>
 
       <label className="checkbox__label"
-        htmlFor={inputId}>{children || label}</label>
+        htmlFor={inputId}>{label}</label>
     </span>
   )
 }

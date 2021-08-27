@@ -14,12 +14,26 @@ const optionsList = [
 function ProductList (props) {
   return (
     <section className="catalog-page__product-list">
-      <div className="sort-by">
-        <span className="text">Sort by :</span>
+      <div className="product-list__section-header">
+        <div className="section-header__text">
+          <h1>Available products</h1>
 
-        <Dropdown 
-          options={optionsList}
-          initialItem={optionsList[0]} />
+          <span className="items-count">
+            <span className="slash">/</span>
+            <span className="count">
+              <span className="num">0</span>
+              items found
+            </span>
+          </span>
+        </div>
+
+        <div className="sort-by">
+          <span className="text">Sort by :</span>
+
+          <Dropdown classes="sort-by-dropdown"
+            options={optionsList}
+            initialItem={optionsList[0]} />
+        </div>
       </div>
     </section>
   )

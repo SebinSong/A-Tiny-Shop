@@ -3,12 +3,79 @@
   display: block;
   flex-grow: 1;
 
-  .sort-by {
+  .product-list__section-header {
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-top: 3.6rem;
+
+    > * {
+      // in case the children break into two lines
+      margin-bottom: 2.4rem;
+    }
+
+    @include from ($tablet) {
+      margin-top: 0;
+    }
+  }
+
+  .section-header__text {
+    position: relative;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 3.6rem;
+
+    > * { 
+      font-weight: 600;
+    }
+
+    h1 {
+      display: inline-block;
+      font-size: var(--h-size-0);
+    }
+
+    .items-count {
+      display: block;
+      color: var(--sub-header-text-color);
+      margin-top: 0.3rem;
+
+      .slash {
+        display: none;
+        margin: 0 0.8rem;
+      }
+
+      .count {
+        display: block;
+        letter-spacing: 0.75px;
+
+        .num {
+          display: inline-block;
+          text-decoration: underline;
+          margin-right: 0.6rem;
+        }
+      }
+
+      @include from ($tablet) {
+        display: inline-block;
+        margin-top: 0;
+
+        .count,
+        .slash {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .sort-by {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
 
     .text {
       display: inline-block;

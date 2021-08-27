@@ -3,7 +3,8 @@
 
   .catalog-page__header {
     position: relative;
-    padding: 4.2rem 0 2.2rem;
+    display: block;
+    padding: 5.6rem 0 2.8rem;
     border-bottom: $solid-line;
     margin-bottom: 4.6rem;
 
@@ -19,8 +20,14 @@
 
   .catalog-page__content {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: flex-start;
+
+    @include from ($tablet) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
   }
 }

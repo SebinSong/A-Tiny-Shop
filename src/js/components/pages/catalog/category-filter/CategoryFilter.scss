@@ -1,5 +1,5 @@
 %sub-text-style {
-  color: var(--secondary-1);
+  color: var(--sub-header-text-color);
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.75px;
@@ -7,18 +7,39 @@
 
 .catalog-page__category-filter {
   position: relative;
-  display: block;
-  max-width: $screen-min-width;
-  width: max-content;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   min-width: 24rem;
+  padding-bottom: 3.2rem;
+  border-bottom: 1px solid var(--divider-color);
+
+  @include from ($tablet) {
+    flex-direction: column;
+    max-width: $screen-min-width;
+    width: max-content;
+    margin-right: 2.6rem;
+    padding-bottom: 0;
+    border-right: 1px solid var(--divider-color);
+    border-bottom: unset;
+  }
 
   .category-filter__section-title {
     position: relative;
-    margin-bottom: 3.6rem;
+    margin-right: 3.2rem;
+    padding-right: 3.2rem;
+    border-right: 1px solid var(--divider-color);
+  
+    @include from ($tablet) {
+      margin-bottom: 3.6rem;
+      margin-right: 0;
+      padding-right: 0;
+      border-right: unset;
+    }
 
     h1 {
       font-weight: 600;
-      font-size: 2.4rem;
+      font-size: var(--h-size-0);
       color: var(--text-0);
     }
 
@@ -30,27 +51,78 @@
 
   .category-filter__filters {
     position: relative;
-    display: block;
-    margin-bottom: 1.8rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include from ($tablet) {
+      flex-direction: column;
+      margin-bottom: 1.8rem;
+    }
 
     .filter-group {
       display: block;
+      width: max-content;
+
+      &:not(:last-child) {
+        margin-right: 2.2rem;
+        margin-bottom: 1.6rem;
+
+        @include from ($tablet) {
+          margin-right: 0;
+        }
+      }
+
+      &.is-closed {
+        &:not(:last-child) {
+          margin-bottom: 0.8rem;
+        }
+
+        .group-name {
+          margin-bottom: 0;
+
+          .expand-arrow {
+            transform: rotate(180deg);
+          }
+        }
+
+        .items {
+          max-height: 0;
+        }
+      }
 
       .group-name {
         @extend %sub-text-style;
   
-        display: block;
-        text-decoration: underline;
-        font-size: 1.4rem;
-        margin-bottom: 0.8rem;
-      }
-  
-      .checkbox-container {
         display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 0.8rem;
+        user-select: none;
+
+        > * { display: inline-block; }
+
+        .text {
+          text-decoration: underline;
+          font-size: 1.4rem;
+        }
+
+        .expand-arrow {
+          margin-left: 0.4rem;
+          font-size: var(--size-2);
+          transition: transform 0.15s ease-out;
+        }
       }
 
-      &:not(:last-child) {
-        margin-bottom: 2.6rem;
+      .items {
+        display: block;
+        overflow-y: hidden;
+        max-height: unset;
+
+        .checkbox-container {
+          display: flex;
+        }
       }
     }
   }

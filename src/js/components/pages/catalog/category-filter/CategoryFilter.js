@@ -3,14 +3,39 @@ import React, {
 } from 'react'
 
 // components
-import Checkbox from '@components/shared/checkbox'
+import FilterGroup from './FilterGroup'
 
 import './CategoryFilter.scss'
+
+const filterTypes = [
+  {
+    filterName: 'Sleeve',
+    items: [
+      { id: 'long', name: 'Long' },
+      { id: 'short', name: 'Short' }
+    ]
+  },
+  {
+    filterName: 'Gender',
+    items: [
+      { id: 'unisex', name: 'Unisex' },
+      { id: 'men', name: 'Men' },
+      { id: 'women', name: 'Women' }
+    ]
+  },
+  {
+    filterName: 'Light / Dark',
+    items: [
+      { id: 'light', name: 'Light' },
+      { id: 'dark', name: 'Dark' }
+    ]
+  }
+]
 
 function CategoryFilter (props) {
 
   const onCheckboxClick = useCallback(
-    (label, value) => { console.log(`${label} : ${value}`); },
+    (item, value) => { console.log(`${item.id} : ${value}`); },
     []
   )
   return (
@@ -21,27 +46,14 @@ function CategoryFilter (props) {
       </div>
 
       <div className="category-filter__filters">
-        <div className="filter-group">
-          <span className="group-name">Sleeve</span>
-
-          <Checkbox onChange={onCheckboxClick}>Long</Checkbox>
-          <Checkbox onChange={onCheckboxClick}>Short</Checkbox>
-        </div>
-
-        <div className="filter-group">
-          <span className="group-name">Gender</span>
-
-          <Checkbox onChange={onCheckboxClick}>Unisex</Checkbox>
-          <Checkbox onChange={onCheckboxClick}>Men</Checkbox>
-          <Checkbox onChange={onCheckboxClick}>Women</Checkbox>
-        </div>
-
-        <div className="filter-group">
-          <span className="group-name">Light / Dark</span>
-
-          <Checkbox onChange={onCheckboxClick}>Light</Checkbox>
-          <Checkbox onChange={onCheckboxClick}>Dark</Checkbox>
-        </div>
+        {
+          filterTypes.map(
+            item => <FilterGroup 
+              key={item.filterName}
+              onitemClick={onCheckboxClick}
+              { ...item } />
+          )
+        }
       </div>
     </section>
   )
