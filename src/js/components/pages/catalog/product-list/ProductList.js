@@ -43,7 +43,7 @@ function ProductList (props) {
       <div className="product-list__content">
         <ul className="product-list__item-list">
           {
-            clothesList.map(
+            clothesList.slice(0,5).map(
               item => <ProductCard
               classes="product-list__item"
               tag="li"
