@@ -27,7 +27,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "light",
           gender: "unisex",
-          price: 45.00,
+          price: 70.00,
           totalPurchaseCount: 90,
           rate: 3.59
         },
@@ -39,7 +39,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "light",
           gender: "women",
-          price: 45.00,
+          price: 75.00,
           totalPurchaseCount: 103,
           rate: 4.69
         },
@@ -51,7 +51,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "unisex",
-          price: 45.00,
+          price: 40.00,
           totalPurchaseCount: 94,
           rate: 4.98
         },
@@ -63,7 +63,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "dark",
           gender: "men",
-          price: 45.00,
+          price: 49.99,
           totalPurchaseCount: 138,
           rate: 3.81
         },
@@ -75,7 +75,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "men",
-          price: 45.00,
+          price: 39.99,
           totalPurchaseCount: 68,
           rate: 4.48
         },
@@ -87,7 +87,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "dark",
           gender: "men",
-          price: 45.00,
+          price: 84.99,
           totalPurchaseCount: 133,
           rate: 4.20
         },
@@ -99,7 +99,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "light",
           gender: "women",
-          price: 45.00,
+          price: 55.00,
           totalPurchaseCount: 51,
           rate: 4.21
         },
@@ -111,7 +111,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "dark",
           gender: "unisex",
-          price: 45.00,
+          price: 75.00,
           totalPurchaseCount: 6,
           rate: 4.09
         },
@@ -123,7 +123,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "men",
-          price: 45.00,
+          price: 35.00,
           totalPurchaseCount: 6,
           rate: 4.58
         },
@@ -135,7 +135,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "dark",
           gender: "men",
-          price: 45.00,
+          price: 34.99,
           totalPurchaseCount: 17,
           rate: 3.51
         },
@@ -147,7 +147,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "dark",
           gender: "men",
-          price: 45.00,
+          price: 29.99,
           totalPurchaseCount: 143,
           rate: 4.81
         },
@@ -171,7 +171,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "men",
-          price: 45.00,
+          price: 29.99,
           totalPurchaseCount: 104,
           rate: 3.92
         },
@@ -183,7 +183,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "women",
-          price: 45.00,
+          price: 34.99,
           totalPurchaseCount: 128,
           rate: 4.19
         },
@@ -195,7 +195,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "men",
-          price: 45.00,
+          price: 49.99,
           totalPurchaseCount: 68,
           rate: 4.10
         },
@@ -207,7 +207,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "light",
           gender: "men",
-          price: 45.00,
+          price: 65.00,
           totalPurchaseCount: 100,
           rate: 4.62
         },
@@ -219,7 +219,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "dark",
           gender: "women",
-          price: 45.00,
+          price: 60.00,
           totalPurchaseCount: 84,
           rate: 4.99
         },
@@ -231,7 +231,7 @@ const clothesData = [{
           sleeve: "long",
           lightDark: "dark",
           gender: "women",
-          price: 45.00,
+          price: 54.99,
           totalPurchaseCount: 9,
           rate: 4.91
         },
@@ -255,7 +255,7 @@ const clothesData = [{
           sleeve: "short",
           lightDark: "light",
           gender: "women",
-          price: 45.00,
+          price: 39.99,
           totalPurchaseCount: 82,
           rate: 4.04
         },
