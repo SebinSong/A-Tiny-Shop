@@ -89,16 +89,8 @@
     position: relative;
     display: block;
     
-    .product-list__item-list {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-around;
-      flex-wrap: wrap;
-
-      .product-list__item {
-        margin-right: 2rem;
-        margin-bottom: 3.2rem;
-      }
+    .product-list__item:not(:last-child) {
+      margin-bottom: 3.2rem;
     }
   }
 }

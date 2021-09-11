@@ -1,0 +1,28 @@
+.masonry-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: auto;
+  padding: var(--masonry-gap);
+  overflow: hidden;
+
+  &.no-padding {
+    padding: 0;
+  }
+
+  .masonry__column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-grow: 1;
+    max-width: var(--masonry-item-width);
+    min-height: 30rem;
+    
+    &:not(:last-child) {
+      margin-right: var(--masonry-gap);
+    }
+  }
+}

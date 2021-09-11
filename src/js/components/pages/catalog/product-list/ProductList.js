@@ -3,6 +3,7 @@ import React from 'react'
 // components
 import Dropdown from '@components/shared/dropdown'
 import ProductCard from '@components/global/product-card'
+import Masonry from '@components/shared/masonry'
 
 // view-data
 import clothesList from '@viewdata/clothes-data'
@@ -41,17 +42,19 @@ function ProductList (props) {
       </div>
 
       <div className="product-list__content">
-        <ul className="product-list__item-list">
-          {
-            clothesList.slice(0,5).map(
-              item => <ProductCard
+        <Masonry
+          itemWidth={240}
+          gap={32}
+          list={clothesList.slice(0, 10)}
+          itemRender={
+            itemData => <ProductCard
               classes="product-list__item"
-              tag="li"
-              key={item.id}
-              productInfo={item} />
-            )
+              tag="div"
+              key={itemData.id}
+              productInfo={itemData} 
+            />
           }
-        </ul>
+        />
       </div>
     </section>
   )
