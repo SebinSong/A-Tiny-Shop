@@ -69,7 +69,7 @@ function Masonry ({
     return () => {
       window.removeEventListener('resize', onScreenResize);
     }
-  }, [])
+  }, []);
 
   // etc
   const additionalClasses = [

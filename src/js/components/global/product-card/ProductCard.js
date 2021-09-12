@@ -1,21 +1,9 @@
 import React, { createElement } from 'react'
 
+// child components
+import ImageLoaderBox from '@components/global/image-loader-box'
+
 import './ProductCard.scss'
-
-import ArborealGreySweat from "@images/clothes/ArborealGreySweat_long_bright_unisex.jpg";
-
-const dummyData = {
-  productIndex: 0,
-  id: "ArborealGreySweat_long_bright_unisex_0",
-  imgPath: ArborealGreySweat,
-  name: "Arboreal sweat - grey",
-  sleeve: "long",
-  lightDark: "bright",
-  gender: "unisex",
-  price: 45.00,
-  totalPurchaseCount: 90,
-  rate: 3.59
-}
 
 function ProductCard ({
   productInfo = null,
@@ -31,8 +19,10 @@ function ProductCard ({
   const children = (
     <>
       <div className="product-card__img-container">
-        <img src={imgPath}
-          alt={name} />
+        <ImageLoaderBox 
+          src={imgPath}
+          alt={name}
+          imageMinHeight={200} />
       </div>
 
       <div className="product-card__item-summary">
