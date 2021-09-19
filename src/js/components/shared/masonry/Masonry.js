@@ -43,6 +43,7 @@ function Masonry ({
     const { current: containerEl } = containerRef
     const onScreenResize = () => {
       const getComputed = (el, prop) => window.getComputedStyle(el)[prop];
+
       const containerWidth = parseFloat(getComputed(containerEl, 'width'));
       const availableSpace = noPadding ? containerWidth : containerWidth - 2 * gap;
 
@@ -50,7 +51,7 @@ function Masonry ({
       const divisionVal = Math.floor(availableSpace / itemSpace);
       const remainder = availableSpace % itemSpace;
 
-      if (divisionVal === 1)
+      if (divisionVal <= 1)
         setColumnCount(1);
       else
         setColumnCount(() => {
@@ -77,7 +78,7 @@ function Masonry ({
     classes,
     noPadding && 'no-padding'
   ].filter(Boolean).join(' ');
-  
+ 
   const columnsList = createNumArray(columnCount).map(() => []);
 
   list.forEach((item, index) => {
