@@ -31,11 +31,7 @@ const optionsList = [
 
 function ProductList (props) {
   const dispatch = useDispatch()
-  const { 
-    sleeve: currentSleeveFilter,
-    gender: currentGenderFilter,
-    lightDark: currentLightDarkFilter 
-  } = useSelector(selectCurrentFilters)
+  const currentFilters = useSelector(selectCurrentFilters)
 
   // callbacks
   const onSortSelect = useCallback(
@@ -49,11 +45,14 @@ function ProductList (props) {
    
     return filterList.includes(item[keyName]);
   };
-  const filteredProductList = clothesList
-    .filter(item => itemHasFilterValue(item, 'sleeve', currentSleeveFilter))
-    .filter(item => itemHasFilterValue(item, 'gender', currentGenderFilter))
-    .filter(item => itemHasFilterValue(item, 'lightDark', currentLightDarkFilter));
+  const filteredProductList = clothesList.filter(
+    item => {
+      const filterTypes = ['sleeve', 'gender', 'lightDark'];
 
+      return filterTypes.every(type => itemHasFilterValue(item, type, currentFilters[type]));
+    }
+  );
+  
   return (
     <section className="catalog-page__product-list">
       <div className="product-list__section-header">
