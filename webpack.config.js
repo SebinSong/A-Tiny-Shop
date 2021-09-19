@@ -175,6 +175,7 @@ module.exports = (envSettings) => {
       alias: {
         '@scss': paths.appSass,
         '@images': path.join(paths.appAssets, 'images'),
+        '@store': path.join(paths.appSrc, 'js/store'),
         '@components':  path.join(paths.appSrc, 'js/components'),
         '@contexts':  path.join(paths.appSrc, 'js/contexts'),
         '@hooks':  path.join(paths.appSrc, 'js/hooks'),

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useReducer
+} from 'react';
 
 // child components
 import CategoryFilter from './category-filter'

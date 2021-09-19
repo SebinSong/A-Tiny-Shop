@@ -1,9 +1,15 @@
 import React, { 
   useState,
+  useCallback,
+  useContext,
   memo
- } from 'react';
+} from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 
 import { toggleClass } from '@view-utils'
+
+// action creator
+import { toggleFilter } from '@store/features/catalogFilterSlice.js'
 
 // components
 import Checkbox from '@components/shared/checkbox'
@@ -11,10 +17,26 @@ import Icon from '@components/global/icon'
 
 function FilterGroup ({
   filterName = '',
-  items = [],
-  onItemClick = null
+  filterId = '',
+  items = []
 }) {
+  const dispatch = useDispatch()
+  const currentFilterState = useSelector(
+    state => state.catalog.filters[filterId]
+  )
+
+  // states
   const [isClosed, setIsclosed] = useState(false)
+
+  // callbacks
+  const onItemClick = useCallback(
+    (item, value) => { 
+      dispatch(toggleFilter({
+        filterType: filterId,
+        filterItem: item.id
+      }));
+    }
+  );
 
   return (
     <div className={`filter-group ${toggleClass('is-closed', isClosed)}`}>
@@ -31,6 +53,7 @@ function FilterGroup ({
             (item) => <Checkbox key={item.id}
               item={item}
               onChange={onItemClick}
+              value={currentFilterState.includes(item.id)}
             >{item.name}</Checkbox>
           )
         }

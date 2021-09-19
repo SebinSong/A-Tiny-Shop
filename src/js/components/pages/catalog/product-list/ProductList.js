@@ -1,4 +1,16 @@
-import React from 'react'
+import React, {
+  useCallback
+} from 'react'
+import { 
+  useDispatch,
+  useSelector
+} from 'react-redux'
+
+// action creator
+import { 
+  selectCurrentFilters,
+  setSort
+} from '@store/features/catalogFilterSlice.js'
 
 // components
 import Dropdown from '@components/shared/dropdown'
@@ -11,12 +23,37 @@ import clothesList from '@viewdata/clothes-data'
 import './ProductList.scss'
 
 const optionsList = [
-  { id: 'opt-1', name: 'Option 1' },
-  { id: 'opt-2', name: 'Option 2' },
-  { id: 'opt-3', name: 'Option 3' }
+  { id: 'most-popular', name: 'Most popular' },
+  { id: 'top-rated', name: 'Top rated' },
+  { id: 'lowest-price', name: 'Lowest price' },
+  { id: 'highest-price', name: 'highest price' }
 ]
 
 function ProductList (props) {
+  const dispatch = useDispatch()
+  const { 
+    sleeve: currentSleeveFilter,
+    gender: currentGenderFilter,
+    lightDark: currentLightDarkFilter 
+  } = useSelector(selectCurrentFilters)
+
+  // callbacks
+  const onSortSelect = useCallback(
+    (item) => { dispatch(setSort(item.id)) }
+  )
+
+  // etc
+  const itemHasFilterValue = (item, keyName, filterList) => {
+    if (filterList.length === 0)
+      return true;
+   
+    return filterList.includes(item[keyName]);
+  };
+  const filteredProductList = clothesList
+    .filter(item => itemHasFilterValue(item, 'sleeve', currentSleeveFilter))
+    .filter(item => itemHasFilterValue(item, 'gender', currentGenderFilter))
+    .filter(item => itemHasFilterValue(item, 'lightDark', currentLightDarkFilter));
+
   return (
     <section className="catalog-page__product-list">
       <div className="product-list__section-header">
@@ -26,7 +63,7 @@ function ProductList (props) {
           <span className="items-count">
             <span className="slash">/</span>
             <span className="count">
-              <span className="num">0</span>
+              <span className="num">{filteredProductList.length}</span>
               items found
             </span>
           </span>
@@ -37,7 +74,8 @@ function ProductList (props) {
 
           <Dropdown classes="sort-by-dropdown"
             options={optionsList}
-            initialItem={optionsList[0]} />
+            onItemSelect={onSortSelect}
+          />
         </div>
       </div>
 
@@ -45,7 +83,7 @@ function ProductList (props) {
         <Masonry
           itemWidth={240}
           gap={32}
-          list={clothesList.slice(0, 10)}
+          list={filteredProductList}
           itemRender={
             itemData => <ProductCard
               classes="product-list__item"

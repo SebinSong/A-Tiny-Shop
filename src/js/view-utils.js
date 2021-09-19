@@ -9,7 +9,7 @@ export function createNumArray (num) {
   return [ ...new Array(num).keys() ]
 }
 
-export default function throttle (fn, delay) {
+export function throttle (fn, delay) {
   let allowSample = true;
 
   return (...args) => {
@@ -23,4 +23,10 @@ export default function throttle (fn, delay) {
       allowSample = true;
     }, delay)
   }
+}
+
+export function cloneDeep (obj) {
+  if (!obj) return obj;
+
+  return JSON.parse(JSON.stringify(obj));
 }

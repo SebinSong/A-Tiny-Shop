@@ -1,4 +1,7 @@
-import React, { createElement } from 'react'
+import React, {
+  memo,
+  createElement 
+} from 'react'
 
 // child components
 import ImageLoaderBox from '@components/global/image-loader-box'
@@ -10,6 +13,7 @@ function ProductCard ({
   classes = '',
   tag = 'div'
 }) {
+  console.log('re-rendering product!: ', productInfo.name)
   if (!productInfo)
     return null
 
@@ -43,4 +47,4 @@ function ProductCard ({
   )
 }
 
-export default ProductCard
+export default memo(ProductCard)

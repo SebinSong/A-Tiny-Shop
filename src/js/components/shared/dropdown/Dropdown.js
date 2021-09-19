@@ -11,7 +11,7 @@ import './Dropdown.scss'
 
 function Dropdown ({
   classes = '',
-  initialText = '',
+  initialText = 'Select option',
   initialItem = null,
   options = [],
   onItemSelect = null // needs to be a memoized callback
