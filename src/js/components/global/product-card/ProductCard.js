@@ -13,7 +13,6 @@ function ProductCard ({
   classes = '',
   tag = 'div'
 }) {
-  console.log('re-rendering product!: ', productInfo.name)
   if (!productInfo)
     return null
 

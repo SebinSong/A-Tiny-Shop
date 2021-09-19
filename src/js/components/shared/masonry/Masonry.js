@@ -1,7 +1,8 @@
 import React, {
   useRef,
   useState,
-  useEffect
+  useEffect,
+  memo
 } from 'react'
 
 // utils
@@ -100,4 +101,4 @@ function Masonry ({
   )
 }
 
-export default Masonry;
+export default memo(Masonry);

@@ -1,15 +1,18 @@
 import React, {
-  useCallback
+  useCallback,
+  useEffect,
+  useState
 } from 'react'
 import { 
   useDispatch,
   useSelector
 } from 'react-redux'
 
-// action creator
 import { 
   selectCurrentFilters,
-  setSort
+  selectCurrentSort,
+  setSort,
+  sortMethodMap
 } from '@store/features/catalogFilterSlice.js'
 
 // components
@@ -29,9 +32,46 @@ const optionsList = [
   { id: 'highest-price', name: 'highest price' }
 ]
 
+let flagTimeoutId = null;
+
 function ProductList (props) {
   const dispatch = useDispatch()
   const currentFilters = useSelector(selectCurrentFilters)
+  const currentSortOption = useSelector(selectCurrentSort)
+
+  // states
+  const [isFiltering, setIsFiltering] = useState(false)
+  const [productListToShow, setProductListToShow] = useState(clothesList)
+
+  // effects
+  useEffect(() => {
+    setIsFiltering(true);
+
+    // filter the product list
+    const filteredProductList = clothesList.filter(
+      item => {
+        const filterTypes = ['sleeve', 'gender', 'lightDark'];
+
+        return filterTypes.every(type => itemHasFilterValue(item, type, currentFilters[type]));
+      }
+    );
+
+    // sort the list
+    if (currentSortOption) {
+      const sortMethod = sortMethodMap[currentSortOption];
+
+      sortMethod &&
+        filteredProductList.sort(sortMethod);
+    }
+
+    // set-up timers for the view update.
+    clearTimeout(flagTimeoutId);
+    flagTimeoutId = setTimeout(() => { 
+      setIsFiltering(false);
+      setProductListToShow(filteredProductList);
+    }, 800);
+
+  }, [currentFilters, currentSortOption])
 
   // callbacks
   const onSortSelect = useCallback(
@@ -45,14 +85,16 @@ function ProductList (props) {
    
     return filterList.includes(item[keyName]);
   };
-  const filteredProductList = clothesList.filter(
-    item => {
-      const filterTypes = ['sleeve', 'gender', 'lightDark'];
 
-      return filterTypes.every(type => itemHasFilterValue(item, type, currentFilters[type]));
-    }
+  const productCardRender = useCallback(
+    itemData => <ProductCard
+              classes="product-list__item"
+              tag="div"
+              key={itemData.id}
+              productInfo={itemData} 
+            />
   );
-  
+
   return (
     <section className="catalog-page__product-list">
       <div className="product-list__section-header">
@@ -62,7 +104,9 @@ function ProductList (props) {
           <span className="items-count">
             <span className="slash">/</span>
             <span className="count">
-              <span className="num">{filteredProductList.length}</span>
+              <span className="num">
+                { isFiltering ? 0 : productListToShow.length }
+              </span>
               items found
             </span>
           </span>
@@ -79,19 +123,15 @@ function ProductList (props) {
       </div>
 
       <div className="product-list__content">
-        <Masonry
-          itemWidth={240}
-          gap={32}
-          list={filteredProductList}
-          itemRender={
-            itemData => <ProductCard
-              classes="product-list__item"
-              tag="div"
-              key={itemData.id}
-              productInfo={itemData} 
-            />
-          }
-        />
+        { isFiltering ? 
+          <p>Loading...</p> :
+          <Masonry
+            itemWidth={240}
+            gap={32}
+            list={productListToShow}
+            itemRender={productCardRender}
+          />
+        }
       </div>
     </section>
   )

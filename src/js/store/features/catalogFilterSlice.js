@@ -149,6 +149,16 @@ function _resetFilter (filters, filterType) {
 
 // selectors
 const selectCurrentFilters = state => state.catalog.filters
+const selectCurrentSort = state => state.catalog.sort
+
+// sort helper
+const sortMethodMap = {
+  // 'most-popular', 'top-rated', 'lowest-price', 'highest-price'
+  "most-popular": (a, b) => b.totalPurchaseCount - a.totalPurchaseCount,
+  "top-rated": (a, b) => b.rate - a.rate,
+  "lowest-price": (a, b) => a.price - b.price,
+  "highest-price": (a, b) => b.price - a.price
+}
 
 export {
   initialState,
@@ -164,7 +174,11 @@ export {
 
   // selectors
   selectCurrentFilters,
+  selectCurrentSort,
 
   // reducer
-  catalogReducer
+  catalogReducer,
+
+  // sort helper
+  sortMethodMap
 }
