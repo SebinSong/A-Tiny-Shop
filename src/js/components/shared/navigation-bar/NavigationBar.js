@@ -2,6 +2,7 @@ import React, {
   useState,
   useCallback
 } from 'react'
+import { useDispatch } from 'react-redux'
 
 // hooks
 import { useMQ } from '@hooks'
@@ -11,6 +12,9 @@ import NavLinkItem from './nav-link-item/NavLinkItem'
 import IconButton from './icon-button/IconButton'
 import NavLogo from './nav-logo/NavLogo'
 import DrawerMenu from './drawer-menu'
+import SearchWidget from './search-widget'
+
+import { openSearchWidget } from '@store/features/searchWidgetSlice'
 
 import './NavigationBar.scss'
 
@@ -21,6 +25,8 @@ const navLinkList = [
 ]
 
 function NavigationBar (props) {
+  const dispatch = useDispatch()
+
   // hooks
   const isAfterTablet = useMQ('from-tablet')
 
@@ -30,6 +36,7 @@ function NavigationBar (props) {
   // methods
   const openDrawer = useCallback(() => setIsDrawerOpen(true), [])
   const closeDrawer = useCallback(() => setIsDrawerOpen(false), [])
+  const onSearchIconClick = useCallback(() => dispatch(openSearchWidget()), [])
 
   // view
   const afterTablet = (
@@ -55,13 +62,16 @@ function NavigationBar (props) {
         {isAfterTablet ? afterTablet : beforeTablet}
 
         <ul className="toolbar__icon-btn-container">
-          <IconButton classes="search-icon">search</IconButton>
+          <IconButton classes="search-icon"
+            onClick={onSearchIconClick}>search</IconButton>
           <IconButton classes="cart-icon">shopping_cart</IconButton>
         </ul>
       </ul>
 
       <DrawerMenu isDrawerOpen={isDrawerOpen}
         closeDrawer={closeDrawer} />
+      
+      <SearchWidget />
     </aside>
   )
 }

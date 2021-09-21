@@ -12,4 +12,9 @@
   border-right: 1px solid var(--divider-color);
 
   font-size: var(--size-0);
+
+  @include until ($page-content-max-width) {
+    border-left: unset;
+    border-right: unset;
+  }
 }

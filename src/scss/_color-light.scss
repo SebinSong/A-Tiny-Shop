@@ -17,7 +17,7 @@
   --background-1: #F2EBE9;
 
   // general
-  --divider-color: #BDBDBD;
+  --divider-color: var(--text-0);
   --box-shadow: var(--text-0_2);
   --deep-box-shadow: 0 12px 28px 0 rgba(0,0,0,0.2),
     0 2px 4px 0 rgba(0,0,0,0.1);
@@ -37,7 +37,7 @@
   // navigation-bar
   --navbar-bg-color: var(--background-0);
   --navbar-text-color: var(--text-0);
-  --navbar-divider-color: #BDBDBD;
+  --navbar-divider-color: var(--divider-color);
   --navbar-active-item-bg-color: var(--primary-3);
 
   // drawer
@@ -63,7 +63,18 @@
   --dropdown-text-color: var(--text-0);
   --dropdown-bg-color_hover: var(--primary-3);
 
+  // forms - text-input
+  --text-input-text-color: var(--text-0);
+  --text-input-icon-color: var(--text-0_2);
+  --text-input-placeholder-color: var(--text-0_2);
+  --text-input-border-color: var(--text-0);
+  --text-input-bg-color: var(--background-0);
+
   // image-loader-box
   --image-loader-bg-color: var(--primary-3);
   --image-loader-gradient-color: #d6b87e;
+
+  // search-widget
+  --search-widget-bg-color: var(--background-0);
+  --search-widget-border-color: var(--divider-color);
 }
