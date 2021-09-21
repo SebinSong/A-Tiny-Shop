@@ -69,7 +69,7 @@ function ProductList (props) {
     flagTimeoutId = setTimeout(() => { 
       setIsFiltering(false);
       setProductListToShow(filteredProductList);
-    }, 800);
+    }, 200 + Math.floor(Math.random() * 100));
 
   }, [currentFilters, currentSortOption])
 
