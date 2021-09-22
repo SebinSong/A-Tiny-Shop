@@ -66,7 +66,7 @@ function SearchWidget (props) {
         <SearchInput classes="search-widget__search-input"
           value={searchValue}
           onInput={onSearchInputUpdate}
-          placeholder={'Enter keyword'} />
+          placeholder={'Search ...'} />
       </div>
 
       <div className="search-widget__content">
