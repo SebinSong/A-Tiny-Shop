@@ -1,0 +1,48 @@
+.modal {
+  @extend %overlay;
+
+  position: fixed;
+  z-index: $zIndex_modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay-bg-color);
+  }
+
+  .modal__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: max-content;
+    height: auto;
+    min-height: 22rem;
+    min-width: 29rem;
+    max-width: 85vw;
+    max-height: 68rem;
+    border: 1px solid var(--divider-color);
+    box-shadow: var(--deep-box-shadow);
+    background-color: var(--modal-content-bg-color);
+    font-size: var(--size-0);
+    padding: 3.2rem 2.4rem;
+    z-index: 1;
+    overflow-y: auto;
+
+    @include desktop {
+      max-width: 100rem;
+    }
+
+    @include from-v (68rem) {
+      max-height: 85vh;
+    }
+  }
+}

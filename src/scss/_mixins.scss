@@ -29,8 +29,20 @@
   }
 }
 
+@mixin from-v ($value) {
+  @media screen and (min-height: $value) {
+    @content;
+  }
+}
+
 @mixin until ($device) {
   @media screen and (max-width: $device - 1px) {
+    @content;
+  }
+}
+
+@mixin until-v ($value) {
+  @media screen and (max-height: $value - 1px) {
     @content;
   }
 }
