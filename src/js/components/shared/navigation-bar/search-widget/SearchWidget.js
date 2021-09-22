@@ -41,10 +41,10 @@ function SearchWidget (props) {
       setIsLoading(true)
 
       setTimeout(() => {
-        const trimedValue = value.trim();
+        const trimedValue = value.trim().toLowerCase();
         const filteredItemList = !trimedValue ? [] : 
           clothesList.filter(
-            item => item.name.indexOf(trimedValue) >= 0
+            item => item.name.toLowerCase().indexOf(trimedValue) >= 0
           );
   
         setItemsToShow(filteredItemList);

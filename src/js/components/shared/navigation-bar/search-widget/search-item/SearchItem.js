@@ -7,22 +7,19 @@ import './SearchItem.scss'
 
 // helpers
 function generateHighlightedName (keyword, name) {
-  if (!keyword ||
-    name.indexOf(keyword) < 0)
-    return <span>{name}</span>
+  const normalizedName = name.toLowerCase();
+  const index = normalizedName.indexOf(keyword.toLowerCase())
 
-  const index = name.indexOf(keyword)
-  const [before, after] = [
+  if (!keyword || index < 0)
+    return name
+
+  return [
     name.slice(0, index),
+    <span key={'highlighted'} className="highlighted">
+      {name.slice(index, index + keyword.length)}
+    </span>,
     name.slice(index + keyword.length)
   ]
-  const arr = [ before, keyword, after ]
-  return arr.map((str, index) => {
-        if (index === 1)
-          return <span key={index} className="highlighted">{str}</span>
-        else
-          return <span key={index}>{str}</span>
-      });
 }
 
 function SearchItem ({
