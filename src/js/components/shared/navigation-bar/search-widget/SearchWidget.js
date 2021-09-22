@@ -9,6 +9,7 @@ import {
 
 // child components
 import SearchInput from '@components/shared/search-input';
+import SearchItem from './search-item/SearchItem.js'
 import Icon from '@components/global/icon'
 
 // action creators
@@ -16,8 +17,10 @@ import { closeSearchWidget } from '@store/features/searchWidgetSlice'
 
 // utils
 import { toggleClass } from '@view-utils'
+import clothesList from '@viewdata/clothes-data'
 
 import './SearchWidget.scss'
+
 
 function SearchWidget (props) {
   // redux
@@ -26,6 +29,8 @@ function SearchWidget (props) {
 
   // state
   const [searchValue, setSearchValue] = useState('')
+  const [itemsToShow, setItemsToShow] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   // callbacks
   const onSearchInputUpdate = useCallback(
@@ -33,6 +38,18 @@ function SearchWidget (props) {
       const { value } = e.target
 
       setSearchValue(v => v !== value ? value : v)
+      setIsLoading(true)
+
+      setTimeout(() => {
+        const trimedValue = value.trim();
+        const filteredItemList = !trimedValue ? [] : 
+          clothesList.filter(
+            item => item.name.indexOf(trimedValue) >= 0
+          );
+  
+        setItemsToShow(filteredItemList);
+        setIsLoading(false);
+      }, 200)
     }
   );
   const onCloseClick = useCallback(
@@ -52,7 +69,20 @@ function SearchWidget (props) {
           placeholder={'Enter keyword'} />
       </div>
 
-      <div className="search-widget__content">widget_content</div>
+      <div className="search-widget__content">
+        {
+          isLoading ?
+            <div>Loading ...</div> :
+          itemsToShow.length === 0 ?
+            <div>no items found</div> :
+            itemsToShow.map(
+              item => <SearchItem
+                key={item.id}
+                currentSearchKeyword={searchValue}
+                itemData={item} />
+            )
+        }
+      </div>
     </div>
   )
 }

@@ -3,6 +3,9 @@
   --l-search-widget-max-width: 30rem;
 
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   top: calc(#{$toolbar-height} + 1.2rem);
   right: 1.2rem;
   transform: translateX(150%);
@@ -13,6 +16,7 @@
   max-width: var(--l-search-widget-max-width);
   background-color: var(--search-widget-bg-color);
   border: 1px solid var(--search-widget-border-color);
+  box-shadow: var(--deep-box-shadow);
   z-index: $zIndx_widget;
 
   @include smallphone {
@@ -30,6 +34,7 @@
     position: relative;
     width: 100%;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: flex-start;
     padding: 2rem 1.4rem;
@@ -64,11 +69,16 @@
   &__content {
     position: relative;
     display: block;
+    flex-grow: 1;
     width: calc(100% - 1.4rem * 2);
     padding: 1.6rem 0 2.4rem;
     margin: 0 auto;
     border-top: 1px solid var(--divider-color);
     font-size: var(--size-0);
     color: var(--text-0);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @include overflow-touch;
   }
 }

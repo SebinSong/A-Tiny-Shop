@@ -12,7 +12,7 @@ function ImageLoaderBox ({
   imageWidth = 100,
   imageMinHeight = 100,
   classes = '',
-  delay = 100 // intentional delay for image load - good user experience?
+  delay = 80 // intentional delay for image load - good user experience?
 }) {
   // ref
   const imgRef = useRef(null);
