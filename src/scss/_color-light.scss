@@ -73,6 +73,11 @@
   //modal
   --modal-overlay-bg-color: rgba(150, 123, 69, 0.7);
   --modal-content-bg-color: var(--background-0);
+  --modal-text-color: var(--text-0);
+
+  // amount-selector
+  --amount-selector-text-color: var(--text-0);
+  --amount-selector-text-color_hover: var(--text-1);
 
   // image-loader-box
   --image-loader-bg-color: var(--primary-3);

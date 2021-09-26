@@ -1,4 +1,5 @@
 .product-detail-modal {
+  $border-style: 1px solid var(--divider-color);
   @extend %overlay;
 
   position: fixed;
@@ -20,32 +21,250 @@
 
   .product-detail-modal__content {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
-    border: 1px solid var(--divider-color);
+    border: $border-style;
     box-shadow: var(--deep-box-shadow);
     background-color: var(--modal-content-bg-color);
+    color: var(--modal-text-color);
     font-size: var(--size-0);
     padding: 3.2rem 2.4rem;
     z-index: 1;
 
     @include from ($smallphone) {
-      width: max-content;
       height: auto;
       min-height: 22rem;
-      min-width: 29rem;
-      max-width: 85vw;
       max-height: 68rem;
+      min-width: 29rem;
+      width: 85vw;
+    }
+
+    @media screen and (min-width: #{$smallphone}) and (min-height: 68rem) {
+      max-height: 85vh;
+    }
+
+    @include from (600px) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include from (900px) {
+      align-items: flex-start;
     }
 
     @include desktop {
       max-width: 100rem;
     }
 
-    @media screen and (min-width: #{$smallphone}) and (min-height: 68rem) {
-      max-height: 85vh;
+    // childs
+    .product-detail-modal__img-container {
+      position: relative;
+      display: block;
+      border: $border-style;
+      padding: 0.6rem 0.6rem 0.4rem;
+      margin-bottom: 3.2rem;
+      flex-shrink: 0;
+
+      .img-container__img-box > img {
+        width: auto;
+        height: 34 rem;
+        object-fit: cover;
+      }
+
+      @include from (600px) {
+        margin-right: 2rem;
+        margin-bottom: 0;
+        align-self: stretch;
+
+        .img-container__img-box {
+          display: inline-flex;
+          height: 100%;
+          align-items: center;
+
+          > img { height: 26rem; }
+        }
+      }
+      
+      @include tablet {
+        .img-container__img-box {
+          display: inline-block;
+
+          > img { height: 38rem; }
+        }
+      }
+
+      @include from (900px) {
+        margin-right: 3.4rem;
+
+        .img-container__img-box > img {
+          height: 48rem;
+          min-width: 32rem;
+        }
+      }
+    }
+
+    .product-detail-modal__details {
+      position: relative;
+      display: block;
+      flex-grow: 1;
+      border: $border-style;
+      padding: 1.4rem;
+
+      > * { display: block; }
+
+      .details__name {
+        font-size: var(--size-3);
+        letter-spacing: 0.2rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .details__price {
+        font-size: var(--size-0);
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        color: var(--secondary-1);
+        margin-bottom: 2rem;
+        text-decoration: underline;
+      }
+
+      .details__detail-group {
+        position: relative;
+        margin-bottom: 2.2rem;
+        border-top: $border-style;
+        padding-top: 2rem;
+
+        .detail-group__header {
+          position: relative;
+          display: block;
+          padding: 0.4rem 0.8rem;
+          letter-spacing: 0.2rem;
+          margin-bottom: 1.8rem;
+          font-weight: 600;
+          border: $border-style;
+          width: max-content;
+        }
+
+        .detail-group__item {
+          display: block;
+          margin-bottom: 0.6rem;
+          letter-spacing: 0.1rem;
+
+          > * { display: inline-block; }
+
+          label {
+            position: relative;
+            width: 14rem;
+            margin-right: 1.6rem;
+            padding-left: 1.6rem;
+            user-select: none;
+
+            &::before {
+              content: '';
+              position: absolute;
+              left: 0.2rem;
+              margin-top: 0.1rem;
+              top: 50%;
+              transform: translateY(-50%);
+              display: inline-block;
+              width: 0.6rem;
+              height: var(--size-0);
+              border: $border-style;
+            }
+
+            &::after {
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              display: inline-block;
+              content: ':'; 
+            }
+          }
+
+          .count {
+            color: var(--secondary-1);
+          }
+        }
+      }
+
+      .details__add-to-cart-btn {
+        display: block;
+      }
+
+      .details__amount-selector {
+        margin-bottom: 2rem;
+      }
+
+      @include from ($smallphone) {
+        max-width: 34rem;
+      }
+
+      @include from (600px) {
+        max-width: unset;
+      }
+
+      @include from (900px) {
+        align-self: stretch;
+        padding: 2rem 1.4rem;
+
+        .details__name {
+          font-size: var(--size-4);
+          letter-spacing: 0.4rem;
+        }
+
+        .details__price {
+          font-size: var(--size-1);
+          letter-spacing: 0.2rem;
+          margin-bottom: 2.6rem;
+        }
+
+        .details__detail-group {
+          padding-top: 2.6rem;
+          margin-bottom: 3rem;
+
+          .detail-group__header {
+            padding: 0.8rem 1.2rem;
+            letter-spacing: 0.4rem;
+            margin-bottom: 3.2rem;
+          }
+
+          .detail-group__item {
+            margin-bottom: 1.4rem;
+          }
+        }
+
+        .details__amount-selector {
+          margin-bottom: 2.6rem;
+        }
+      }
+    }
+
+    .product-detail-modal__close-btn {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      top: 0.8rem;
+      right: 0.8rem;
+      width: 4.2rem;
+      height: 4.2rem;
+      font-size: var(--size-2);
+      font-weight: 600;
+      border: $border-style;
+      background-color: var(--modal-content-bg-color);
+      z-index: 1;
+      color: var(--modal-text-color);
+
+      &:hover {
+        color: var(--modal-content-bg-color);
+        background-color: var(--modal-text-color);
+      }
     }
   }
 }

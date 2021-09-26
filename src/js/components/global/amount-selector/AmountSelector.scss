@@ -1,0 +1,48 @@
+.amount-selector {
+  $side: 3.4rem;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  > * {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__input {
+    width: $side;
+    height: $side;
+    line-height: $side;
+    font-size: 1.4rem;
+    text-align: center;
+    border: 1px solid var(--divider-color);
+    margin-right: 0.6rem;
+    letter-spacing: 1px;
+
+    &:focus {
+      border: 1px solid var(--secondary-1);
+    }
+  }
+
+  &__btn {
+    width: $side;
+    height: $side;
+    border: 1px solid var(--divider-color);
+    cursor: pointer;
+    font-size: var(--size-1);
+    font-weight: 600;
+    user-select: none;
+    color: var(--amount-selector-text-color);
+
+    &:hover {
+      background-color: var(--amount-selector-text-color);
+      color: var(--amount-selector-text-color_hover);
+    }
+
+    &.plus {
+      margin-right: 0.6rem;
+    }
+  }
+}

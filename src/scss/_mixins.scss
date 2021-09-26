@@ -23,13 +23,13 @@
   }
 }
 
-@mixin from ($device) {
-  @media screen and (min-width: $device) {
+@mixin from($bp) {
+  @media screen and (min-width: $bp) {
     @content;
   }
 }
 
-@mixin from-v ($value) {
+@mixin from_v ($value) {
   @media screen and (min-height: $value) {
     @content;
   }
@@ -41,7 +41,7 @@
   }
 }
 
-@mixin until-v ($value) {
+@mixin until_v ($value) {
   @media screen and (max-height: $value - 1px) {
     @content;
   }
@@ -60,7 +60,7 @@
 }
 
 @mixin tablet {
-  @media screen and (min-width: $tablet), print {
+  @media screen and (min-width: $tablet) {
     @content;
   }
 }

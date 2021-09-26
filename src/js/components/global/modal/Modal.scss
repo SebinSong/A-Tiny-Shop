@@ -42,7 +42,7 @@
       max-width: 100rem;
     }
 
-    @include from-v (68rem) {
+    @include from_v (68rem) {
       max-height: 85vh;
     }
   }
