@@ -8,9 +8,9 @@ const openProductDetail = productData => ({
   type: 'product-detail/open',
   payload: productData
 })
-const closeProductDetail = () => {
+const closeProductDetail = () => ({
   type: 'product-detail/close'
-}
+})
 
 function productDetailReducer (state = initState, action) {
   const { type, payload } = action
@@ -28,8 +28,8 @@ function productDetailReducer (state = initState, action) {
     case 'product-detail/close':
       if (isOpen) {
         return {
-          isOpen: false,
-          productData: null
+          ...state,
+          isOpen: false
         }
       }
   }
@@ -39,6 +39,7 @@ function productDetailReducer (state = initState, action) {
 
 // selectors
 const selectCurrentProductDetail = state => state.productDetail.productData
+const selectIsModalOpen = state => state.productDetail.isOpen
 
 export {
   initState,
@@ -51,5 +52,6 @@ export {
   closeProductDetail,
 
   // selectors
-  selectCurrentProductDetail
+  selectCurrentProductDetail,
+  selectIsModalOpen
 }

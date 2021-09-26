@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  pointer-events: none;
 
   .product-detail-modal__overlay {
     position: absolute;
@@ -17,6 +18,9 @@
     height: 100%;
     background-color: var(--modal-overlay-bg-color);
     z-index: 0;
+    pointer-events: inherit;
+    opacity: 0;
+    transition: opacity 0.2s ease-out 0.15s;
   }
 
   .product-detail-modal__content {
@@ -36,6 +40,13 @@
     font-size: var(--size-0);
     padding: 3.2rem 2.4rem;
     z-index: 1;
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
+
+    // when not open
+    opacity: 0;
+    transform: translateY(-60px);
 
     @include from ($smallphone) {
       height: auto;
@@ -73,7 +84,8 @@
 
       .img-container__img-box > img {
         width: auto;
-        height: 34 rem;
+        height: 34rem;
+        max-width: 25rem;
         object-fit: cover;
       }
 
@@ -87,7 +99,9 @@
           height: 100%;
           align-items: center;
 
-          > img { height: 26rem; }
+          > img { 
+            height: 26rem;
+          }
         }
       }
       
@@ -95,7 +109,10 @@
         .img-container__img-box {
           display: inline-block;
 
-          > img { height: 38rem; }
+          > img {
+            max-width: 34rem;
+            height: 38rem; 
+          }
         }
       }
 
@@ -266,5 +283,22 @@
         background-color: var(--modal-text-color);
       }
     }
+  }
+}
+
+.product-detail-modal.is-open {
+  pointer-events: auto;
+
+  .product-detail-modal__overlay {
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .product-detail-modal__content {
+    transform: translateY(0px);
+    opacity: 1;
+    transition:
+      opacity 0.3s ease-out 0.1s,
+      transform 0.3s ease-out 0.1s;
   }
 }

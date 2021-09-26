@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  useSelector,
+  useDispatch
+} from 'react-redux'
 
 import './ProductDetailModal.scss'
 
@@ -7,70 +11,88 @@ import ImageLoaderBox from '@components/global/image-loader-box'
 import AmountSelector from '@components/global/amount-selector'
 import Icon from '@components/global/icon';
 
-import clothesList from '@viewdata/clothes-data'
+// utils
+import { toggleClass } from '@view-utils'
+
+// redux
+import {
+  selectCurrentProductDetail,
+  selectIsModalOpen,
+  closeProductDetail
+} from '@store/features/productDetailSlice'
 
 function ProductDetailModal () {
-  const productData = clothesList[0]
+  // redux
+  const dispatch = useDispatch();
+
+  // selectors
+  const isModalOpen = useSelector(selectIsModalOpen);
+  const productData = useSelector(selectCurrentProductDetail);
+
   const {
     name, imgPath, sleeve,
     lightDark, gender, price, totalPurchaseCount
-  } = productData
+  } = productData || {}
 
   // callbacks
   const closeModal = () => {
-    console.log('close modal')
+    dispatch(closeProductDetail())
   }
 
   return (
-    <div className="product-detail-modal">
+    <div className={`product-detail-modal ${toggleClass('is-open', isModalOpen)}`}>
       <div className="product-detail-modal__overlay"></div>
 
       <div className="product-detail-modal__content">
-        <div className="product-detail-modal__img-container">
-          <ImageLoaderBox classes="img-container__img-box"
-            src={imgPath}
-            alt={name} />
-        </div>
+        { Boolean(productData) &&
+          <>
+            <div className="product-detail-modal__img-container">
+              <ImageLoaderBox classes="img-container__img-box"
+                src={imgPath}
+                alt={name} />
+            </div>
 
-        <div className="product-detail-modal__details">
-          <div className="details__name">{name}</div>
+            <div className="product-detail-modal__details">
+              <div className="details__name">{name}</div>
 
-          <div className="details__price">$ {price.toFixed(2)}</div>
+              <div className="details__price">$ {price.toFixed(2)}</div>
 
-          <div className="details__detail-group">
-            <span className="detail-group__header">Details</span>
+              <div className="details__detail-group">
+                <span className="detail-group__header">Details</span>
 
-            <span className="detail-group__item">
-              <label>gender</label>
-              <span className="value">{gender}</span>
-            </span>
+                <span className="detail-group__item">
+                  <label>gender</label>
+                  <span className="value">{gender}</span>
+                </span>
 
-            <span className="detail-group__item">
-              <label>sleeve</label>
-              <span className="value">{sleeve}</span>
-            </span>
+                <span className="detail-group__item">
+                  <label>sleeve</label>
+                  <span className="value">{sleeve}</span>
+                </span>
 
-            <span className="detail-group__item">
-              <label>light / dark</label>
-              <span className="value">{lightDark}</span>
-            </span>
+                <span className="detail-group__item">
+                  <label>light / dark</label>
+                  <span className="value">{lightDark}</span>
+                </span>
 
-            <span className="detail-group__item">
-              <label>total purchased</label>
-              <span className="value count">{totalPurchaseCount}</span>
-            </span>
-          </div>
+                <span className="detail-group__item">
+                  <label>total purchased</label>
+                  <span className="value count">{totalPurchaseCount}</span>
+                </span>
+              </div>
 
-          <div className="details__btn-container">
-            <AmountSelector classes="details__amount-selector" />
+              <div className="details__btn-container">
+                <AmountSelector classes="details__amount-selector" />
 
-            <button className="is-primary details__add-to-cart-btn">Add To Cart</button>
-          </div>
-        </div>
+                <button className="is-primary details__add-to-cart-btn">Add To Cart</button>
+              </div>
+            </div>
 
-        <Icon classes="product-detail-modal__close-btn"
-          tag="button"
-          onClick={closeModal}>close</Icon>
+            <Icon classes="product-detail-modal__close-btn"
+              tag="button"
+              onClick={closeModal}>close</Icon>
+          </>
+        }
       </div>
     </div>
   );
