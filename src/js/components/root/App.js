@@ -10,10 +10,9 @@ import Home from '../pages/home'
 import Catalog from '../pages/catalog'
 import ShoppingCart from '../pages/shopping-cart'
 
-import Modal from '@components/global/modal'
-
 // child-components
 import NavigationBar from '../shared/navigation-bar'
+import ProductDetailModal from '../shared/product-detail-modal'
 
 import './App.scss'
 
@@ -23,9 +22,7 @@ function App (props) {
     <>
       <NavigationBar />
 
-      <Modal>
-        <p>modal content...</p>
-      </Modal>
+      <ProductDetailModal />
 
       <Switch>
         <Route path="/home">

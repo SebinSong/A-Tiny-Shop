@@ -1,0 +1,51 @@
+.product-detail-modal {
+  @extend %overlay;
+
+  position: fixed;
+  z-index: $zIndex_modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .product-detail-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay-bg-color);
+    z-index: 0;
+  }
+
+  .product-detail-modal__content {
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    border: 1px solid var(--divider-color);
+    box-shadow: var(--deep-box-shadow);
+    background-color: var(--modal-content-bg-color);
+    font-size: var(--size-0);
+    padding: 3.2rem 2.4rem;
+    z-index: 1;
+
+    @include from ($smallphone) {
+      width: max-content;
+      height: auto;
+      min-height: 22rem;
+      min-width: 29rem;
+      max-width: 85vw;
+      max-height: 68rem;
+    }
+
+    @include desktop {
+      max-width: 100rem;
+    }
+
+    @media screen and (min-width: #{$smallphone}) and (min-height: 68rem) {
+      max-height: 85vh;
+    }
+  }
+}
