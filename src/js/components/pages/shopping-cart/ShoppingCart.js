@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import './ShoppingCart.scss'
 
@@ -12,4 +12,4 @@ function ShoppingCart (prpos) {
   )
 }
 
-export default ShoppingCart
+export default memo(ShoppingCart);

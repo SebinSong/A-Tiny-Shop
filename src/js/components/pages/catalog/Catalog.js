@@ -1,5 +1,6 @@
 import React, {
-  useReducer
+  useReducer,
+  memo
 } from 'react';
 
 // child components
@@ -23,4 +24,4 @@ function Catalog (props) {
   )
 };
 
-export default Catalog;
+export default memo(Catalog);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import "./Home.scss";
 
@@ -12,4 +12,4 @@ function Home (props) {
   )
 };
 
-export default Home;
+export default memo(Home);

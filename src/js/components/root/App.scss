@@ -1,5 +1,14 @@
+:root.disable-scroll {
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  main.page { pointer-events: none; }
+}
+
 #root {
   position: relative;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
