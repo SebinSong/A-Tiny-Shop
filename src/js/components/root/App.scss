@@ -2,7 +2,11 @@
   overflow-x: hidden;
   overflow-y: hidden;
 
-  main.page { pointer-events: none; }
+  main.page { 
+    pointer-events: none;
+    
+    * { user-select: none; }
+  }
 }
 
 #root {

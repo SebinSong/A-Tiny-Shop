@@ -17,7 +17,7 @@
   background-color: var(--search-widget-bg-color);
   border: 1px solid var(--search-widget-border-color);
   box-shadow: var(--deep-box-shadow);
-  z-index: $zIndx_widget;
+  z-index: $zIndex_widget;
 
   @include smallphone {
     --l-search-widget-max-height: unset;

@@ -1,6 +1,7 @@
 import React, {
   useState,
-  useCallback
+  useCallback,
+  memo
 } from 'react'
 import { 
   useDispatch,
@@ -87,4 +88,4 @@ function SearchWidget (props) {
   )
 }
 
-export default SearchWidget;
+export default memo(SearchWidget);

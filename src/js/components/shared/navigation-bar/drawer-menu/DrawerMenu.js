@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // components
@@ -68,4 +68,4 @@ function DrawerMenu ({
   )
 }
 
-export default DrawerMenu
+export default memo(DrawerMenu);

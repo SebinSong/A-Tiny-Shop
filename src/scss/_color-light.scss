@@ -22,6 +22,7 @@
   --deep-box-shadow: 0 12px 28px 0 rgba(0,0,0,0.2),
     0 2px 4px 0 rgba(0,0,0,0.1);
   --sub-header-text-color: var(--secondary-1);
+  --overlay-common-color: rgba(150, 123, 69, 0.7);
 
   // button
   --button-primary-bg-color: var(--text-0);
@@ -47,6 +48,10 @@
   --drawer-divider-color: var(--text-0);
   --drawer-text-color: var(--text-0);
   --drawer-text-color_hover: var(--text-1);
+
+  // cart-widget
+  --cart-widget-bg-color: var(--background-0);
+  --cart-widget-overlay-bg-color: var(--overlay-common-color);
 
   // product-card
   --product-card-img-bg-color: var(--background-0);
