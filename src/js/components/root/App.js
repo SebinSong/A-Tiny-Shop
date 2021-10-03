@@ -18,7 +18,7 @@ import ProductDetailModal from '../shared/product-detail-modal'
 // root utils
 import {
   checkIfAnyOverlayActive,
-  toggleMainPointerEvents
+  toggleMainScroll
 } from './root-util.js'
 
 import './App.scss'
@@ -28,7 +28,7 @@ function App (props) {
   const isOverlayActive = useSelector(checkIfAnyOverlayActive);
 
   useEffect(() => {
-    toggleMainPointerEvents(isOverlayActive);
+    toggleMainScroll(isOverlayActive);
   }, [isOverlayActive]);
 
   return (

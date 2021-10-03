@@ -5,7 +5,7 @@ const checkIfAnyOverlayActive = state => {
   return productDetail.isOpen ||
     searchWidget.isActive
 }
-const toggleMainPointerEvents = flag => {
+const toggleMainScroll = flag => {
   const handle = document.documentElement.classList;
   
   console.log('handle!!: ', handle)
@@ -17,5 +17,5 @@ const toggleMainPointerEvents = flag => {
 
 export {
   checkIfAnyOverlayActive,
-  toggleMainPointerEvents
+  toggleMainScroll
 }
