@@ -46,3 +46,22 @@
     }
   }
 }
+
+.amount-selector.is-small {
+  $side-small: 2.4rem;
+
+  .amount-selector__input {
+    width: $side-small;
+    height: $side-small;
+    line-height: $side-small;
+    font-size: 1.2rem;
+    margin-right: 0.2rem;
+  }
+
+  .amount-selector__btn {
+    width: $side-small;
+    height: $side-small;
+    font-size: 1rem; 
+    margin-right: 0.2rem;
+  }
+}

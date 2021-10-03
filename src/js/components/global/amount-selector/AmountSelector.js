@@ -18,6 +18,8 @@ const isWithinRange = (v, min, max) => {
 function AmountSelector ({
   initialAmount = 0,
   classes = '',
+  isSmall = false,
+  disableInput = false,
   min = 0,
   max = 99,
   onChange = null
@@ -65,8 +67,15 @@ function AmountSelector ({
       setAndTriggerOnChange(current - 1);
   };
 
+  // etc
+  const classStr = [
+    'amount-selector',
+    classes,
+    isSmall && 'is-small'
+  ].filter(Boolean).join(' ')
+
   return (
-    <span className={`amount-selector ${classes}`}>
+    <span className={classStr}>
       <Icon classes="amount-selector__btn plus"
         tag="button"
         onClick={increment}>add</Icon>
@@ -74,6 +83,7 @@ function AmountSelector ({
       <input className="amount-selector__input"
         type="text"
         value={amount}
+        disabled={disableInput}
         onChange={onInputChange}
         onBlur={onInputBlur} />
 

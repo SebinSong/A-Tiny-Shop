@@ -11,7 +11,7 @@ const checkIfAnyOverlayActive = state => {
     cartWidget.isOpen
 }
 const toggleMainScroll = flag => {
-  const handle = document.documentElement.classList;
+  const handle = document.documentElement.classList; 
   
   if (flag)
     handle.add('disable-scroll');

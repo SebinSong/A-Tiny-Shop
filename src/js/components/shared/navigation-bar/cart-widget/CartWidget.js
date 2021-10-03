@@ -9,6 +9,7 @@ import {
 
 // child components
 import Icon from '@components/global/icon'
+import WidgetItem from './cart-widget-item/CartWidgetItem'
 
 // utils
 import {
@@ -18,6 +19,9 @@ import {
 import { toggleClass } from '@view-utils'
 
 import './CartWidget.scss'
+
+// temp
+import clothesList from '@viewdata/clothes-data.js'
 
 
 const EmptyCart = () => (
@@ -49,7 +53,7 @@ function CartWidget (props) {
         </div>
 
         <ul className="cart-widget__item-list">
-          <EmptyCart />
+          <WidgetItem itemData={clothesList[0]} />
         </ul>
       </div>
     </div>
