@@ -7,7 +7,7 @@ const openCartWidget = () => ({ type: 'cart-widget/open' });
 const closeCartWidget = () => ({ type: 'cart-widget/close' });
 const toggleCartWidget = () => ({ type: 'cart-widget/toggle' });
 
-function CartWidgetReducer (state = initState, action) {
+function cartWidgetReducer (state = initState, action) {
   const { isOpen } = state;
 
   switch (action.type) {
@@ -31,7 +31,7 @@ export {
   toggleCartWidget,
 
   // reducer
-  CartWidgetReducer,
+  cartWidgetReducer,
 
   // selector
   selectIsCartWidgetOpen

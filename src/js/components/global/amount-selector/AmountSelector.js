@@ -1,5 +1,7 @@
 import React, {
-  useState
+  useState,
+  useEffect,
+  memo
 } from 'react'
 
 // child components
@@ -16,19 +18,24 @@ const isWithinRange = (v, min, max) => {
 }
 
 function AmountSelector ({
-  initialAmount = 0,
+  amount = 0,
   classes = '',
   isSmall = false,
   disableInput = false,
-  min = 0,
+  min = 1,
   max = 99,
   onChange = null
 }) {
-  const [amount, setAmount] = useState(initialAmount);
+  const [amountState, setAmountState] = useState(amount);
+
+  // effects
+  useEffect(
+    () => { setAmountState(amount) }, [amount]
+  );
 
   // callbacks
   const setAndTriggerOnChange = v => {
-    setAmount(v)
+    setAmountState(v)
 
     onChange && onChange(v)
   };
@@ -37,7 +44,7 @@ function AmountSelector ({
     const newVal = target.value
 
     if (newVal === '') {
-      setAmount('')
+      setAmountState('')
       return;
     }
 
@@ -50,18 +57,18 @@ function AmountSelector ({
   }
 
   const onInputBlur = () => {
-    if (amount === '')
+    if (amountState === '')
       setAndTriggerOnChange(0);
   };
 
   const increment = () => {
-    const current = amount;
+    const current = amountState;
 
     if (current < max)
       setAndTriggerOnChange(current + 1);
   };
   const decrement = () => {
-    const current = amount;
+    const current = amountState;
 
     if (current > min)
       setAndTriggerOnChange(current - 1);
@@ -82,7 +89,7 @@ function AmountSelector ({
 
       <input className="amount-selector__input"
         type="text"
-        value={amount}
+        value={amountState}
         disabled={disableInput}
         onChange={onInputChange}
         onBlur={onInputBlur} />

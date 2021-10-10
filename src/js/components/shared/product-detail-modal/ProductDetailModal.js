@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {
+  useCallback
+} from 'react'
 import {
   useSelector,
   useDispatch
@@ -7,8 +9,8 @@ import {
 import './ProductDetailModal.scss'
 
 // child components
+import CallToActions from './CallToActions.js'
 import ImageLoaderBox from '@components/global/image-loader-box'
-import AmountSelector from '@components/global/amount-selector'
 import Icon from '@components/global/icon';
 
 // utils
@@ -35,9 +37,9 @@ function ProductDetailModal () {
   } = productData || {}
 
   // callbacks
-  const closeModal = () => {
-    dispatch(closeProductDetail())
-  }
+  const closeModal = useCallback(
+    () => { dispatch(closeProductDetail()) }, []
+  )
 
   return (
     <div className={`product-detail-modal ${toggleClass('is-open', isModalOpen)}`}>
@@ -79,13 +81,12 @@ function ProductDetailModal () {
                   <label>total purchased</label>
                   <span className="value count">{totalPurchaseCount}</span>
                 </span>
-              </div>
+              </div> 
 
-              <div className="details__btn-container">
-                <AmountSelector classes="details__amount-selector" />
-
-                <button className="is-primary details__add-to-cart-btn">Add To Cart</button>
-              </div>
+              <CallToActions
+                isModalOpen={isModalOpen}
+                productData={productData}
+                closeModal={closeModal} />
             </div>
 
             <Icon classes="product-detail-modal__close-btn"

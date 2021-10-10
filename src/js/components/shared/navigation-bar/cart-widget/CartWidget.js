@@ -20,9 +20,10 @@ import { toggleClass } from '@view-utils'
 
 import './CartWidget.scss'
 
-// temp
-import clothesList from '@viewdata/clothes-data.js'
-
+// redux
+import {
+  selectAllCartItems
+} from '@store/features/cartSlice.js'
 
 const EmptyCart = () => (
   <li className="empty-cart">
@@ -35,13 +36,15 @@ const EmptyCart = () => (
 function CartWidget (props) {
   const dispatch = useDispatch()
   const isWidgetActive = useSelector(selectIsCartWidgetOpen);
+  const cartItems = useSelector(selectAllCartItems);
 
   // callbacks
   const closeWidget = useCallback(() => dispatch( closeCartWidget() ), [])
 
   return (
     <div className={`cart-widget-container ${toggleClass('is-open', isWidgetActive)}`}>
-      <div className="cart-widget__overlay"></div>
+      <div className="cart-widget__overlay"
+        onClick={closeWidget}></div>
 
       <div className="cart-widget__content">
         <div className="cart-widget__content-header">
@@ -53,7 +56,16 @@ function CartWidget (props) {
         </div>
 
         <ul className="cart-widget__item-list">
-          <WidgetItem itemData={clothesList[0]} />
+          {
+            cartItems.length === 0 ?
+              <EmptyCart /> :
+              cartItems.map(item => {
+                return <WidgetItem 
+                  key={item.id}
+                  amount={item.amount}
+                  itemData={item.data} />
+              })
+          }
         </ul>
       </div>
     </div>
