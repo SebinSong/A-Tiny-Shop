@@ -93,11 +93,13 @@ function cartReducer (state = initState, action) {
 // selectors
 const selectAllCartItems = state => state.cart;
 const selectTotalCartPrice = state => {
-  return state.cart.reduce((currentTotal, item) => {
+  const sum = state.cart.reduce((currentTotal, item) => {
     const { amount, data } = item
 
     return currentTotal + amount * parseFloat(data.price)
   }, 0);
+
+  return sum.toFixed(2);
 };
 
 export {
