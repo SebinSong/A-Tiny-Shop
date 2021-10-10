@@ -18,6 +18,9 @@ import {
   addToCart,
   setCartItemAmount
 } from '@store/features/cartSlice.js'
+import {
+  turnOnCartBadge
+} from '@store/features/cartWidgetSlice.js'
 
 function CallToActions ({
   productData,
@@ -58,6 +61,7 @@ function CallToActions ({
       };
 
       dispatch(addToCart(payload));
+      dispatch(turnOnCartBadge());
     }
 
     closeModal();

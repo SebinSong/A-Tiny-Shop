@@ -3,7 +3,8 @@
   cursor: unset;
   list-style: none;
 
-  button {
+  button.icon-button__icon {
+    position: relative;
     display: inline-block;
     color: var(--navbar-text-color);
     font-size: 1.8rem;
@@ -21,5 +22,27 @@
     &:hover {
       background-color: var(--navbar-active-item-bg-color);
     }
+
+    &.has-badge::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
+      z-index: 1;
+      background-color: var(--primary-1);
+      animation: badge-pulse 3s ease-out infinite;
+    }
   }
+}
+
+@keyframes badge-pulse {
+  0% { transform: scale(1); }
+  8% { transform: scale(1.2); }
+  15% { transform: scale(0.7); }
+  21% { transform: scale(1); }
+  100% { transform: scale(1); }
 }

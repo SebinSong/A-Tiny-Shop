@@ -22,7 +22,8 @@ import './CartWidget.scss'
 
 // redux
 import {
-  selectAllCartItems
+  selectAllCartItems,
+  selectTotalCartPrice
 } from '@store/features/cartSlice.js'
 
 const EmptyCart = () => (
@@ -37,6 +38,9 @@ function CartWidget (props) {
   const dispatch = useDispatch()
   const isWidgetActive = useSelector(selectIsCartWidgetOpen);
   const cartItems = useSelector(selectAllCartItems);
+  const totalCartPrice = useSelector(selectTotalCartPrice);
+  
+  const isCartEmpty = cartItems.length === 0;
 
   // callbacks
   const closeWidget = useCallback(() => dispatch( closeCartWidget() ), [])
@@ -57,7 +61,7 @@ function CartWidget (props) {
 
         <ul className="cart-widget__item-list">
           {
-            cartItems.length === 0 ?
+            isCartEmpty ?
               <EmptyCart /> :
               cartItems.map(item => {
                 return <WidgetItem 
@@ -67,6 +71,18 @@ function CartWidget (props) {
               })
           }
         </ul>
+
+        {
+          isCartEmpty ? null :
+          <div className="cart-widget__button-container">
+            <button type="button"
+              className="is-primary check-out-btn">
+                <span className="text">Check out</span>
+
+                <span className="total-amount">$ {totalCartPrice}</span>
+            </button>
+          </div>
+        }
       </div>
     </div>
   )

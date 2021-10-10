@@ -1,7 +1,13 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
 // child components
 import ImageLoaderBox from '@components/global/image-loader-box'
+
+// redux
+import {
+  openProductDetail
+} from '@store/features/productDetailSlice.js'
 
 import './SearchItem.scss'
 
@@ -26,6 +32,7 @@ function SearchItem ({
   currentSearchKeyword = '',
   itemData = null
 }) {
+  const dispatch = useDispatch()
   const {
     imgPath, name, price
   } = itemData;
@@ -34,8 +41,14 @@ function SearchItem ({
     currentSearchKeyword.trim(), name
   );
 
+  // callbacks
+  const onTileClick = () => {
+    dispatch(openProductDetail(itemData))
+  }
+
   return (
-    <div className="search-widget__search-item">
+    <div className="search-widget__search-item"
+      onClick={onTileClick}>
       <ImageLoaderBox classes="search-item__img"
         src={imgPath}
         alt={name} />

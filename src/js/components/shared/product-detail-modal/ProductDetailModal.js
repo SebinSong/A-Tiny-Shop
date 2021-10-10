@@ -43,7 +43,8 @@ function ProductDetailModal () {
 
   return (
     <div className={`product-detail-modal ${toggleClass('is-open', isModalOpen)}`}>
-      <div className="product-detail-modal__overlay"></div>
+      <div className="product-detail-modal__overlay"
+        onClick={closeModal}></div>
 
       <div className="product-detail-modal__content">
         { Boolean(productData) &&
