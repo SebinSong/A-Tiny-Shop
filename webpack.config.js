@@ -209,8 +209,12 @@ module.exports = (envSettings) => {
           // fixes the error where a route isn't matched on page refresh or on manually typing the url
           hot: true,
           compress: true,
-          overlay: true,
-          contentBase: paths.appDist,
+          client: {
+            overlay: true
+          },
+          static: {
+            directory: paths.appDist
+          },
           port: 5000
         }
       }
