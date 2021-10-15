@@ -1,0 +1,19 @@
+.page.shopping-cart {
+  $solid-line: 1px solid var(--divider-color);
+
+  .shopping-cart-page__header {
+    position: relative;
+    display: block;
+
+    margin-top: 3.2rem;
+    padding-bottom: 2.6rem;
+
+    .header-text {
+      font-size: 4rem;
+      font-weight: 600;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--divider-color);
+      width: max-content;
+    }
+  }
+}

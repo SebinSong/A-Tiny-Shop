@@ -5,11 +5,10 @@ import {
   Redirect,
   Route
 } from "react-router";
+import loadable from '@loadable/component'
 
 // page-components
-import Home from '../pages/home'
-import Catalog from '../pages/catalog'
-import ShoppingCart from '../pages/shopping-cart'
+import Fallback from '../pages/fallback'
 
 // child-components
 import NavigationBar from '../shared/navigation-bar'
@@ -21,7 +20,22 @@ import {
   toggleMainScroll
 } from './root-util.js'
 
+// view-utils
+import { pMinMax } from '@view-utils'
+
 import './App.scss'
+
+const [PAGE_LOAD_MIN_DELAY, PAGE_LOAD_TIMEOUT_DURATION] = [1200, 20000]
+const AsyncPage = loadable(
+  props => pMinMax(
+    import(/* webpackChunkName: "page-chunk" */ `../pages/${props.name}`),
+    PAGE_LOAD_MIN_DELAY,
+    PAGE_LOAD_TIMEOUT_DURATION),
+  {
+    fallback: <Fallback />,
+    cacheKey: props => props.name
+  }
+)
 
 
 function App (props) {
@@ -39,15 +53,15 @@ function App (props) {
 
       <Switch>
         <Route path="/home">
-          <Home />
+          <AsyncPage name="home" />
         </Route>
 
         <Route path="/catalog">
-          <Catalog />
+          <AsyncPage name="catalog" />
         </Route>
 
         <Route path="/shopping-cart">
-          <ShoppingCart />
+          <AsyncPage name="shopping-cart" />
         </Route>
 
         <Redirect to="/catalog" />

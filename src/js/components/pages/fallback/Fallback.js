@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './Fallback.scss';
 
 function PageFallback () {
   return (
-    <div className="page-fallback">Loading ...</div>
+    <main className="page fallback">Loading the page...</main>
   )  
 };
 
-export default PageFallback;
+export default memo(PageFallback);

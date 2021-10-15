@@ -111,7 +111,8 @@ module.exports = (envSettings) => {
                       '@babel/preset-react'
                     ],
                     plugins: [
-                      '@babel/plugin-proposal-class-properties'
+                      '@babel/plugin-proposal-class-properties',
+                      "@babel/plugin-transform-runtime"
                     ],
                     compact: isProd
                   }
@@ -180,7 +181,7 @@ module.exports = (envSettings) => {
         '@contexts':  path.join(paths.appSrc, 'js/contexts'),
         '@hooks':  path.join(paths.appSrc, 'js/hooks'),
         '@viewdata':  path.join(paths.appSrc, 'js/view-data'),
-        '@view-utils': path.join(paths.appSrc, 'js/view-utils.js')
+        '@view-utils': path.join(paths.appSrc, 'js/view-utils/index.js')
       },
       extensions: ['.js', '.json'], // extensions to be used to resolve when a module is referenced without the extension specified
       mainFiles: ['index'] // the file name to be used when resolving a folder

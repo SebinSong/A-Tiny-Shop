@@ -1,15 +1,21 @@
-export function toggleClass (classStr = '', toggle = false) {
+import {
+  pMinMax,
+  pMinDelay,
+  promiseTimeout
+} from './p-min-max.js'
+
+function toggleClass (classStr = '', toggle = false) {
   return toggle ? classStr : ''
 }
 
-export function createNumArray (num) {
+function createNumArray (num) {
   if (!Number.isInteger(num))
     return []
 
   return [ ...new Array(num).keys() ]
 }
 
-export function throttle (fn, delay) {
+function throttle (fn, delay) {
   let allowSample = true;
 
   return (...args) => {
@@ -25,8 +31,20 @@ export function throttle (fn, delay) {
   }
 }
 
-export function cloneDeep (obj) {
+function cloneDeep (obj) {
   if (!obj) return obj;
 
   return JSON.parse(JSON.stringify(obj));
+}
+
+export {
+  // p-min-max
+  pMinMax,
+  pMinDelay,
+  promiseTimeout,
+
+  toggleClass,
+  createNumArray,
+  throttle,
+  cloneDeep
 }

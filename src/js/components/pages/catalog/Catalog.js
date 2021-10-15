@@ -1,5 +1,4 @@
 import React, {
-  useReducer,
   memo
 } from 'react';
 
