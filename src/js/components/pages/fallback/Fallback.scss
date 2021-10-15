@@ -1,0 +1,23 @@
+.page.fallback {
+  .loading-ani-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: max-content;
+    height: auto;
+
+    .loading-ani__ani {
+      margin-bottom: 0.4rem;
+    }
+
+    .loading-ani__text {
+      display: block;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+  }
+}

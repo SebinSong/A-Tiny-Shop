@@ -25,7 +25,7 @@ import { pMinMax } from '@view-utils'
 
 import './App.scss'
 
-const [PAGE_LOAD_MIN_DELAY, PAGE_LOAD_TIMEOUT_DURATION] = [1200, 20000]
+const [PAGE_LOAD_MIN_DELAY, PAGE_LOAD_TIMEOUT_DURATION] = [1500, 20000]
 const AsyncPage = loadable(
   props => pMinMax(
     import(/* webpackChunkName: "page-chunk" */ `../pages/${props.name}`),

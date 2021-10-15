@@ -19,6 +19,7 @@ import {
 import Dropdown from '@components/shared/dropdown'
 import ProductCard from '@components/global/product-card'
 import Masonry from '@components/shared/masonry'
+import LoaderCommon from '@components/shared/loader-common'
 
 // view-data
 import clothesList from '@viewdata/clothes-data'
@@ -31,6 +32,15 @@ const optionsList = [
   { id: 'lowest-price', name: 'Lowest price' },
   { id: 'highest-price', name: 'highest price' }
 ]
+
+const LoadingAnimation = () => (
+  <div className="product-list__loading-animation">
+    <LoaderCommon classes="product-list__loader"
+      isSmall={true} />
+
+    <div className="product-list__loader-text">Loading products..</div>
+  </div>
+)
 
 let flagTimeoutId = null;
 
@@ -69,7 +79,7 @@ function ProductList (props) {
     flagTimeoutId = setTimeout(() => { 
       setIsFiltering(false);
       setProductListToShow(filteredProductList);
-    }, 200 + Math.floor(Math.random() * 100));
+    }, 400 + Math.floor(Math.random() * 100));
 
   }, [currentFilters, currentSortOption])
 
@@ -124,7 +134,7 @@ function ProductList (props) {
 
       <div className="product-list__content">
         { isFiltering ? 
-          <p>Loading...</p> :
+          <LoadingAnimation /> :
           <Masonry
             itemWidth={240}
             gap={32}
