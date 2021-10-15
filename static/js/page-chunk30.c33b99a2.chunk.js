@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunka_tiny_shop=self.webpackChunka_tiny_shop||[]).push([[358,596],{4792:function(e,a,n){n.r(a);var t=n(7294);function u(e){return t.createElement("main",{className:"page home"},"Home Page.",t.createElement("br",null),"TBD Soon.")}a.default=(0,t.memo)(u)},9152:function(e,a,n){n.r(a);var t=n(4792);a.default=t.default}}]);

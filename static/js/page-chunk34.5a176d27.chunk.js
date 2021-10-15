@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunka_tiny_shop=self.webpackChunka_tiny_shop||[]).push([[773],{5340:function(s,n,e){e.r(n)}}]);
