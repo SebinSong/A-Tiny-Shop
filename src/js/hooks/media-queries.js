@@ -10,6 +10,7 @@ import {
   useState,
   useEffect
 } from 'react'
+import CustomHookError from './hook-error.js'
 
 const mqString = {
   'desktop': `(min-width: 1200px)`,
@@ -26,7 +27,7 @@ function useMQ (deviceOption) {
   const queryString = mqString[deviceOption || '']
 
   if (!queryString)
-    throw new Error(`useMQ custom hook error - device option "${deviceOption}" not supported`)
+    throw new CustomHookError(`useMQ - device option "${deviceOption}" not supported`)
   
   const [isMatched, setIsMatched] = useState(false)
   const checkIfMatches = () => {

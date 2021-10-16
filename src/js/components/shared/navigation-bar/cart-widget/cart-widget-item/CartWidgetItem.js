@@ -1,42 +1,29 @@
-import React, {
-  useCallback,
-  memo
-} from 'react'
-import { useDispatch } from 'react-redux'
+import React, { memo } from 'react'
 
 // child components
 import ImageLoaderBox from '@components/global/image-loader-box'
 import AmountSelector from '@components/global/amount-selector'
 
-// redux
-import {
-  setCartItemAmount,
-  removeFromCart
-} from '@store/features/cartSlice.js'
+// hooks
+import { useCart } from '@hooks'
 
 import './CartWidgetItem.scss' 
 
 function CartWidgetItem ({
-  classes = '',
-  itemData = null,
-  amount
+  classes = '', id = '', amount = 0
 }) {
-  const dispatch = useDispatch()
-
-  const classStr = `cart-widget__item  ${classes}`
+  // hooks
   const {
-    imgPath, name, price, id
-  } = itemData || {}
+    setCartAmount,
+    removeCartItem,
+    currentItem
+  } = useCart(id)
+  const {
+    imgPath, name, price
+  } = currentItem || {}
 
-  // callbacks
-  const onAmountChange = useCallback(
-    v => {
-      dispatch(setCartItemAmount({ id, amount: v })) 
-    }, []
-  );
-  const removeItem = () => {
-    dispatch(removeFromCart(id))
-  }
+  // etc
+  const classStr = `cart-widget__item  ${classes}`
 
   return (
     <div className={classStr}>
@@ -54,11 +41,11 @@ function CartWidgetItem ({
             isSmall={true}
             disableInput={true}
             amount={amount}
-            onChange={onAmountChange} />
+            onChange={setCartAmount} />
 
           <button type="button"
             className="item-details__remove-btn"
-            onClick={removeItem}>remove</button>
+            onClick={removeCartItem}>remove</button>
         </span>
       </span>
     </div>

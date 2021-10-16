@@ -66,8 +66,8 @@ function CartWidget (props) {
               cartItems.map(item => {
                 return <WidgetItem 
                   key={item.id}
-                  amount={item.amount}
-                  itemData={item.data} />
+                  id={item.id}
+                  amount={item.amount} />
               })
           }
         </ul>
