@@ -1,5 +1,195 @@
 .content__cart-list {
+  $solid-line: 1px solid var(--divider-color);
+
   position: relative;
   display: flex;
   flex-direction: column;
+
+  .content__cart-tile {
+    position: relative;
+    display:  grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "c-img c-detail"
+      "c-cta c-cta";
+    width: 100%;
+    max-width: 42rem;
+    height: max-content;
+    border: $solid-line;
+    padding: 1.4rem;
+    box-shadow: 2px 2px 0px 0px var(--text-0_2);
+
+    &:not(:last-child) {
+      margin-bottom: 2.6rem;
+    }
+
+    @include from (550px) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "c-img c-detail"
+        "c-img c-cta";
+      width: 100%;
+      max-width: 56rem;
+    }
+
+    .cart-tile__img {
+      grid-area: c-img;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 8.8rem;
+      width: 8.8rem;
+      border: $solid-line;
+      padding: 0.6rem;
+      overflow: hidden;
+      margin-right: 1.4rem;
+
+      > img {
+        height: 100%;
+        border: 1px solid var(--text-0_2);
+        object-fit: cover;
+      }
+
+      > .image-loader-box__loading-animation {
+        align-self: stretch;
+      }
+
+      @include from ($smallphone) {
+        height: 12rem;
+        width: 12rem;
+      }
+
+      @include from (550px) {
+        min-height: 26rem;
+        width: 18rem;
+        height: auto;
+        margin-right: 2rem;
+      }
+    }
+
+    .cart-tile__details {
+      grid-area: c-detail;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+
+      .detail-name {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      .detail-specs {
+        font-size: 1.4rem;
+        color: var(--text-0_1);
+        margin-bottom: 0.4rem;
+      }
+
+      .detail-purchase-count {
+        font-size: 1.4rem;
+        color: var(--text-0_1);
+        margin-top: 0.6rem;
+        margin-bottom: 2.2rem;
+        line-height: 0.6;
+
+        .num {
+          display: inline-block;
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin: 0 0.2rem 1.2rem;
+          text-decoration: underline;
+          color: var(--text-0);
+        }
+      }
+
+      @include tablet {
+        .detail-name {
+          font-size: 2.8rem;
+        }
+      }
+    }
+
+    .cart-tile__cta {
+      grid-area: c-cta;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      color: var(--text-0_1);
+      font-size: 1.4rem;
+
+      @include from (550px) {
+        margin-top: 0;
+      }
+
+      .price-and-amount {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-grow: 1;
+        margin-right: 2.8rem;
+
+        .detail-price {
+          display: inline-block;
+          margin-right: 1.2rem;
+  
+          .text { display: none; }
+
+          .num {
+            display: block;
+            margin-top: 0.2rem;
+            color: var(--text-0);
+            font: {
+              size: 2.2rem;
+              weight: 600;
+            }
+          }
+        }
+  
+        .detail-amount {
+          display: inline-block;
+  
+          .text {
+            display: none;
+            margin-bottom: 0.2rem;
+          }
+        }
+
+        @include from (550px) {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-right: 0;
+
+          .detail-price { 
+            margin-bottom: 0.4rem; 
+            margin-right: 0;
+          }
+
+          .detail-price .text,
+          .detail-price .text {
+            display: block;
+          }
+        }
+      }
+
+      button.cart-tile__remove-btn {
+        font-size: 1.4rem;
+        padding: 0.6rem 1rem;
+        background-color: var(--background-0);
+        z-index: 1;
+        margin-top: 0.8rem;
+
+        @include from (550px) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
 }

@@ -6,7 +6,6 @@ import CartTile from './CartTile.js'
 import clothesList from '@viewdata/clothes-data'
 import './CartList.scss'
 
-const sampleData = clothesList[0]
 const CartEmptyTile = () => (
   <li className="cart-empty-tile">
     Your cart is empty
@@ -17,8 +16,13 @@ function CartList (props) {
 
   return (
     <ul className="content__cart-list">
-      <CartTile id={sampleData.id}
-        amount={3} />
+      {
+        clothesList.slice(0,3).map(
+          item => <CartTile key={item.id}
+            id={item.id} 
+            amount={5} />
+        )
+      }
     </ul>
   )
 }

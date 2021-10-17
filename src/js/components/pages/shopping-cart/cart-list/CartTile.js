@@ -1,7 +1,6 @@
 import React from 'react'
 
 // child components
-import Icon from '@components/global/icon'
 import ImageLoaderBox from '@components/global/image-loader-box'
 import AmountSelector from '@components/global/amount-selector'
 
@@ -16,7 +15,8 @@ function CartTile ({ id, amount }) {
   } = useCart(id);
   const { 
     name, imgPath, price, 
-    gender, lightDark, sleeve
+    gender, lightDark, sleeve,
+    totalPurchaseCount
   } = currentItem
   const specStr = `${gender} / ${lightDark} / ${sleeve}-sleeve`
 
@@ -26,19 +26,34 @@ function CartTile ({ id, amount }) {
         src={imgPath}
         alt={name} />
 
-      <span className="cart-tile__details">
+      <div className="cart-tile__details">
         <span className="detail-name">{name}</span>
         <span className="detail-specs">{specStr}</span>
-        <span className="detail-price">$ {price}</span>
-        
-        <AmountSelector classes="details__amount-select"
-          amount={amount}
-          onChange={setCartAmount} />
-      </span>
+        <span className="detail-purchase-count">
+          <span className="num">{totalPurchaseCount}</span> of this item have been sold so far.
+        </span>
+      </div>
 
-      <Icon tag="button"
-        classes="cart-tile__close-btn"
-        onClick={removeCartItem}>close</Icon>      
+      <div className="cart-tile__cta">
+        <div className="price-and-amount">
+          <span className="detail-price">
+            <span className="text">price:</span>
+            <span className="num">$ {price}</span>
+          </span>
+
+          <span className="detail-amount">
+            <span className="text">amount: </span>
+            
+            <AmountSelector
+              amount={amount}
+              onChange={setCartAmount} />
+          </span>
+        </div>
+
+        <button type="button"
+          className="is-outlined cart-tile__remove-btn"
+          onClick={removeCartItem}>remove</button>
+      </div>
     </li>
   )
 }
