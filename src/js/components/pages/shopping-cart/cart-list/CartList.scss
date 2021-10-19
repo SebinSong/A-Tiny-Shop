@@ -4,6 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .content__cart-tile {
     position: relative;
@@ -199,19 +200,31 @@
     flex-direction: column;
     align-items: center;
     padding: 2.2rem;
-    width: 42rem;
+    max-width: 42rem;
+    width: 100%;
     color: var(--text-0_2);
     box-shadow: inset 0px 0px 2px 0px var(--text-0_2);
 
     &__icon {
-      font-size: 4.6rem;
-      margin-bottom: 1.2rem;
+      font-size: 3rem;
+      margin-bottom: 0.4rem;
     }
 
     &__text {
       display: block;
-      font-size: var(--size-2);
+      font-size: var(--size-0);
       font-weight: 600;
+    }
+
+    @include from ($smallphone) {
+      &__icon {
+        font-size: 4.6rem;
+        margin-bottom: 1.2rem;
+      }
+
+      &__text {
+        font-size: var(--size-2);
+      }
     }
   }
 }

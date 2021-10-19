@@ -37,7 +37,7 @@ function CallToActions ({
 
     setIsItemInCart(itemExists);
     setItemAmount(itemExists ? getCartItem(id).amount : 1);
-  }, [])
+  }, [id])
 
   // callbacks
   const onItemAmountChange = useCallback(

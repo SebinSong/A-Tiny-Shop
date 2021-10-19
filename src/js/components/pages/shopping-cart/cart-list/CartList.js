@@ -4,7 +4,8 @@ import React from 'react'
 import Icon from '@components/global/icon'
 import CartTile from './CartTile.js'
 
-import clothesList from '@viewdata/clothes-data'
+// hooks
+import { useCart } from '@hooks'
 import './CartList.scss'
 
 const CartEmptyTile = () => (
@@ -15,16 +16,20 @@ const CartEmptyTile = () => (
 )
 
 function CartList (props) {
-  const showEmpty = true;
+  const {
+    isCartEmpty,
+    allCartItems
+  } = useCart()
+
   return (
     <ul className="content__cart-list">
       {
-        showEmpty ?
+        isCartEmpty ?
         <CartEmptyTile /> :
-        clothesList.slice(0,3).map(
+        allCartItems.map(
           item => <CartTile key={item.id}
             id={item.id} 
-            amount={5} />
+            amount={item.amount} />
         )
       }
     </ul>
