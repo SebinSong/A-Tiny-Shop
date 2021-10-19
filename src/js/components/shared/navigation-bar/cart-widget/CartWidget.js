@@ -20,11 +20,8 @@ import { toggleClass } from '@view-utils'
 
 import './CartWidget.scss'
 
-// redux
-import {
-  selectAllCartItems,
-  selectTotalCartPrice
-} from '@store/features/cartSlice.js'
+// hooks
+import { useCart } from '@hooks'
 
 const EmptyCart = () => (
   <li className="empty-cart">
@@ -37,10 +34,10 @@ const EmptyCart = () => (
 function CartWidget (props) {
   const dispatch = useDispatch()
   const isWidgetActive = useSelector(selectIsCartWidgetOpen);
-  const cartItems = useSelector(selectAllCartItems);
-  const totalCartPrice = useSelector(selectTotalCartPrice);
-  
-  const isCartEmpty = cartItems.length === 0;
+
+  const { allCartItems, 
+    totalCartPrice,
+    isCartEmpty } = useCart();
 
   // callbacks
   const closeWidget = useCallback(() => dispatch( closeCartWidget() ), [])
@@ -63,7 +60,7 @@ function CartWidget (props) {
           {
             isCartEmpty ?
               <EmptyCart /> :
-              cartItems.map(item => {
+              allCartItems.map(item => {
                 return <WidgetItem 
                   key={item.id}
                   id={item.id}

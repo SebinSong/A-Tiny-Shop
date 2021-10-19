@@ -5,14 +5,14 @@ import ImageLoaderBox from '@components/global/image-loader-box'
 import AmountSelector from '@components/global/amount-selector'
 
 // hooks
-import { useCart } from '@hooks'
+import { useCartItem } from '@hooks'
 
 function CartTile ({ id, amount }) {
   const {
     setCartAmount,
     removeCartItem,
     currentItem
-  } = useCart(id);
+  } = useCartItem(id);
   const { 
     name, imgPath, price, 
     gender, lightDark, sleeve,

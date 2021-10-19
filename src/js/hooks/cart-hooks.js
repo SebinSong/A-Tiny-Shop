@@ -1,14 +1,20 @@
 import { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import { 
+  useDispatch,
+  useSelector
+} from 'react-redux'
 
 import {
-  setCartItemAmount,
-  removeFromCart
+  selectAllCartItems,
+  selectTotalCartPrice,
+  addToCart,
+  removeFromCart,
+  setCartItemAmount
 } from '@store/features/cartSlice.js'
 
 import clothesList from '@viewdata/clothes-data'
 
-function useCart (id) {
+function useCartItem (id) {
   const dispatch = useDispatch()
 
   const currentItem = clothesList.find(item => item.id === id);
@@ -20,12 +26,41 @@ function useCart (id) {
   const removeCartItem = useCallback(
     () => dispatch(removeFromCart(id)), [id]
   )
+  const addToCartWrap = useCallback(
+    payload => dispatch(addToCart(payload)), []
+  )
 
   return {
     setCartAmount,
     removeCartItem,
+    addToCart: addToCartWrap,
     currentItem
   }
 }
 
-export default useCart
+function useCart () {
+  const dispatch = useDispatch()
+
+  const allCartItems = useSelector(selectAllCartItems)
+  const totalCartPrice = useSelector(selectTotalCartPrice)
+  const isCartEmpty = allCartItems.length === 0
+  
+  const addToCartWrap = payload => dispatch(addToCart(payload));
+  const getCartItem = id => allCartItems.find(item => item.id === id) || null
+  const checkIfItemInCart = id => allCartItems.some(item => item.id === id)
+
+  return {
+    allCartItems,
+    totalCartPrice,
+    isCartEmpty,
+
+    addToCart: addToCartWrap,
+    getCartItem,
+    checkIfItemInCart
+  }
+}
+
+export {
+  useCartItem,
+  useCart
+}

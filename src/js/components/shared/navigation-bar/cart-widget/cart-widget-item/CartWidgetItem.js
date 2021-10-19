@@ -5,7 +5,7 @@ import ImageLoaderBox from '@components/global/image-loader-box'
 import AmountSelector from '@components/global/amount-selector'
 
 // hooks
-import { useCart } from '@hooks'
+import { useCartItem } from '@hooks'
 
 import './CartWidgetItem.scss' 
 
@@ -17,7 +17,7 @@ function CartWidgetItem ({
     setCartAmount,
     removeCartItem,
     currentItem
-  } = useCart(id)
+  } = useCartItem(id)
   const {
     imgPath, name, price
   } = currentItem || {}

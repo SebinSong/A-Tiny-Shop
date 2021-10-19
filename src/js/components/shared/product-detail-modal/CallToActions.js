@@ -1,26 +1,17 @@
 import React, {
   useState,
   useCallback,
-  useEffect,
-  memo
+  useEffect
 } from 'react';
-import {
-  useSelector,
-  useDispatch
-} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // child components
 import AmountSelector from '@components/global/amount-selector'
 
-// redux
-import {
-  selectAllCartItems,
-  addToCart,
-  setCartItemAmount
-} from '@store/features/cartSlice.js'
-import {
-  turnOnCartBadge
-} from '@store/features/cartWidgetSlice.js'
+// hooks
+import { useCartItem, useCart } from '@hooks'
+
+import { turnOnCartBadge } from '@store/features/cartWidgetSlice.js'
 
 function CallToActions ({
   productData,
@@ -28,39 +19,40 @@ function CallToActions ({
 }) {
   const dispatch = useDispatch();
   // state
+  const id = productData.id;
+
+  const { 
+    addToCart, setCartAmount
+  } = useCartItem(id);
+  const {
+    checkIfItemInCart, getCartItem
+  } = useCart();
+
   const [itemAmount, setItemAmount] = useState(0);
   const [isItemInCart, setIsItemInCart] = useState(false);
-  const allItems = useSelector(selectAllCartItems);
 
   // effects
   useEffect(() => {
-    const currentItem = allItems.find(item => item.id === productData.id);
+    const itemExists = checkIfItemInCart(id);
 
-    const itemExists = Boolean(currentItem);
     setIsItemInCart(itemExists);
-    setItemAmount(itemExists ? currentItem.amount : 1);
-  }, [productData, allItems])
+    setItemAmount(itemExists ? getCartItem(id).amount : 1);
+  }, [])
 
   // callbacks
   const onItemAmountChange = useCallback(
     v => setItemAmount(v), []
   );
   const onButtonClick = () => {
-    if (isItemInCart) {
-      const payload = {
-        id: productData.id,
-        amount: itemAmount
-      };
-
-      dispatch(setCartItemAmount(payload));
-    } else {
-      const payload = { 
+    if (isItemInCart)
+      setCartAmount(itemAmount);
+    else {
+      addToCart({ 
         id: productData.id, 
         amount: itemAmount, 
         data: productData
-      };
+      });
 
-      dispatch(addToCart(payload));
       dispatch(turnOnCartBadge());
     }
 

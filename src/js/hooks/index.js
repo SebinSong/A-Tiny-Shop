@@ -1,7 +1,11 @@
 import useMQ from './media-queries'
-import useCart from './cart-hooks'
+import {
+  useCart,
+  useCartItem
+} from './cart-hooks'
 
 export {
   useMQ,
-  useCart
+  useCart,
+  useCartItem
 }
