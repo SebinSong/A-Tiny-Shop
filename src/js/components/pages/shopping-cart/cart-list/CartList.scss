@@ -4,7 +4,16 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
   width: 100%;
+  margin-bottom: 4.6rem;
+
+  @include tablet {
+    align-items: flex-start;
+    margin-right: 2.8rem;
+    margin-bottom: 0;
+  }
 
   .content__cart-tile {
     position: relative;
@@ -33,6 +42,10 @@
         "c-img c-cta";
       width: 100%;
       max-width: 56rem;
+    }
+
+    @include tablet {
+      min-width: 42rem;
     }
 
     .cart-tile__img {
@@ -166,7 +179,6 @@
         @include from (550px) {
           flex-direction: column;
           align-items: flex-start;
-          margin-right: 0;
 
           .detail-price { 
             margin-bottom: 0.4rem; 
@@ -182,14 +194,11 @@
 
       button.cart-tile__remove-btn {
         font-size: 1.4rem;
-        padding: 0.6rem 1rem;
+        padding: 0.75rem 1rem;
         background-color: var(--background-0);
         z-index: 1;
-        margin-top: 0.8rem;
+        margin-top: 1.2rem;
 
-        @include from (550px) {
-          margin-top: 0;
-        }
       }
     }
   }
@@ -200,7 +209,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2.2rem;
-    max-width: 42rem;
+    max-width: 60rem;
     width: 100%;
     color: var(--text-0_2);
     box-shadow: inset 0px 0px 2px 0px var(--text-0_2);
@@ -217,9 +226,11 @@
     }
 
     @include from ($smallphone) {
+      padding: 4.2rem 2.2rem;
+
       &__icon {
-        font-size: 4.6rem;
-        margin-bottom: 1.2rem;
+        font-size: 8.6rem;
+        margin-bottom: 2.2rem;
       }
 
       &__text {

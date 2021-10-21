@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import Icon from '@components/global/icon'
 
 import CartList from './cart-list'
+import OrderSummary from './order-summary'
 
 import './ShoppingCart.scss'
 
@@ -30,6 +31,7 @@ function ShoppingCart (prpos) {
     <div className="shopping-cart-page__content">
       <div className="content__see-and-checkout">
         <CartList />
+        <OrderSummary />
       </div>
     </div>
   </main>
