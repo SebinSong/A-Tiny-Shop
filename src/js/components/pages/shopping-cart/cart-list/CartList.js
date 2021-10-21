@@ -11,6 +11,7 @@ import './CartList.scss'
 const CartEmptyTile = () => (
   <li className="cart-empty-tile">
     <Icon classes="cart-empty-tile__icon">production_quantity_limits</Icon>
+    
     <span className="cart-empty-tile__text">Your cart is empty</span>
   </li>
 )
