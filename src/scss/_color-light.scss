@@ -44,19 +44,19 @@
   // drawer
   --drawer-bg-color: var(--background-0);
   --drawer-bg-color_hover: rgba(0,0,0,0.1);
-  --drawer-backdrop-bg-color: rgba(0,0,0,0.2);
+  --drawer-backdrop-bg-color: rgba(0,0,0,0.25);
   --drawer-divider-color: var(--text-0);
   --drawer-text-color: var(--text-0);
   --drawer-text-color_hover: var(--text-1);
 
   // cart-widget
   --cart-widget-bg-color: var(--background-0);
-  --cart-widget-overlay-bg-color: var(--overlay-common-color);
+  --cart-widget-overlay-bg-color: rgba(0,0,0,0.25);
 
   // product-card
   --product-card-img-bg-color: var(--background-0);
   --product-card-img-border-color: var(--divider-color);
-  --product-card-img-shadow-color: var(--primary-3);
+  --product-card-img-shadow-color: rgba(0,0,0,0.3);
   --product-card-name-text-color: var(--text-0);
 
   // forms - checkbox
@@ -76,7 +76,7 @@
   --text-input-bg-color: var(--background-0);
 
   //modal
-  --modal-overlay-bg-color: rgba(150, 123, 69, 0.7);
+  --modal-overlay-bg-color: rgba(0,0,0,0.35);
   --modal-content-bg-color: var(--background-0);
   --modal-text-color: var(--text-0);
 

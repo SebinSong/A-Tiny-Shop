@@ -3,7 +3,10 @@ import React, {
   useCallback,
   useEffect
 } from 'react';
-import { useDispatch } from 'react-redux';
+import { 
+  useDispatch,
+  useSelector
+} from 'react-redux';
 
 // child components
 import AmountSelector from '@components/global/amount-selector'
@@ -15,7 +18,8 @@ import { turnOnCartBadge } from '@store/features/cartWidgetSlice.js'
 
 function CallToActions ({
   productData,
-  closeModal
+  closeModal,
+  isModalOpen
 }) {
   const dispatch = useDispatch();
   // state
@@ -33,11 +37,13 @@ function CallToActions ({
 
   // effects
   useEffect(() => {
-    const itemExists = checkIfItemInCart(id);
+    const itemExists = checkIfItemInCart(productData.id);
 
-    setIsItemInCart(itemExists);
-    setItemAmount(itemExists ? getCartItem(id).amount : 1);
-  }, [id])
+    if (isModalOpen) {
+      setIsItemInCart(itemExists);
+      setItemAmount(itemExists ? getCartItem(productData.id).amount : 1);
+    }
+  }, [productData, isModalOpen])
 
   // callbacks
   const onItemAmountChange = useCallback(
