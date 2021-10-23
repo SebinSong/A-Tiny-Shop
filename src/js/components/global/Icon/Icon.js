@@ -1,8 +1,6 @@
 import { memo } from 'react'
 import { createElement } from 'react';
 
-import './Icon.scss';
-
 function Icon ({
   name = '',
   classes = '',

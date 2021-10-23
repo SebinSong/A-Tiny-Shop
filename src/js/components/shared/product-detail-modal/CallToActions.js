@@ -4,8 +4,7 @@ import React, {
   useEffect
 } from 'react';
 import { 
-  useDispatch,
-  useSelector
+  useDispatch
 } from 'react-redux';
 
 // child components
@@ -25,7 +24,7 @@ function CallToActions ({
   // state
   const id = productData.id;
 
-  const { 
+  const {
     addToCart, setCartAmount
   } = useCartItem(id);
   const {
