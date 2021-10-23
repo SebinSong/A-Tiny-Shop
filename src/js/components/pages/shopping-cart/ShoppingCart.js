@@ -1,5 +1,11 @@
-import React, { memo } from 'react'
+import React, { 
+  memo,
+  useEffect
+} from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import { turnOffCartBadge } from '@store/features/cartWidgetSlice.js'
 
 // components
 import Icon from '@components/global/icon'
@@ -18,11 +24,17 @@ const DiscountedProductCard = () => (
 )
 
 function ShoppingCart (prpos) {
+  const dispatch = useDispatch();
   const history = useHistory();
   const arr = [1, 2, 3, 4]
 
   // callbacks
   const navigateToCatalog = () => { history.push('/catalog') }
+
+  // effects
+  useEffect(
+    () => { dispatch(turnOffCartBadge()); }, []
+  )
 
   return (
   <main className="page shopping-cart">

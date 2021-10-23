@@ -11,7 +11,7 @@ const turnOnCartBadge = () => ({ type: 'cart-widget/badge-on' });
 const turnOffCartBadge = () => ({ type: 'cart-widget/badge-off' });
 
 function cartWidgetReducer (state = initState, action) {
-  const { isOpen, badgeOn } = state;
+  const { isOpen } = state;
 
   switch (action.type) {
     case 'cart-widget/open':
